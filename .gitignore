@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Local captures and inspector output
+.shots/
+.taste-skill/
+.agents/skills/design-taste-frontend/.taste-skill/
+.obsidian/
+
+# Desktop-licensed source font: the page ships the subset in public/fonts
+docs/Ethnocentric (1)/

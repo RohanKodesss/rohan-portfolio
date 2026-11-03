@@ -1,0 +1,28 @@
+[
+ {
+  "file": "../../../public/media/jacquard-loom.webm",
+  "media": "video",
+  "poster": "../../../public/media/jacquard-loom-poster.jpg",
+  "ref": "commons:114181452",
+  "title": "Métier à tisser Jacquard 01",
+  "creator": "Bastenbas",
+  "creatorUrl": null,
+  "date": "2022-01-10",
+  "license": "CC BY-SA 4.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/wiki/File:M%C3%A9tier_%C3%A0_tisser_Jacquard_01.webm",
+  "via": "Wikimedia Commons",
+  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c6/M%C3%A9tier_%C3%A0_tisser_Jacquard_01.webm/M%C3%A9tier_%C3%A0_tisser_Jacquard_01.webm.480p.vp9.webm",
+  "width": 854,
+  "height": 480,
+  "duration": 20.2,
+  "bytes": 4032768,
+  "credit": "\"Métier à tisser Jacquard 01\" by Bastenbas, CC BY-SA 4.0, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-11-03T14:09:21.469Z"
+ }
+]

@@ -38,7 +38,14 @@ export function Nav() {
         <a href="#work">Work</a>
         <a href="#about">About</a>
         <a href="#loom">Loom</a>
-        <a href="#contact">Contact</a>
+        <a
+          className="nav__cta"
+          href="#contact"
+          aria-label="Available for work. Go to contact."
+        >
+          <span className="status-dot" aria-hidden="true" />
+          Available
+        </a>
       </nav>
       <button
         type="button"

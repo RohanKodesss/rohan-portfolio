@@ -9,7 +9,10 @@ export function useScrollProgress<T extends HTMLElement>() {
     const el = ref.current;
     if (!el) return;
 
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    let listening = false;
+
     const measure = () => {
       frame = 0;
       const rect = el.getBoundingClientRect();
@@ -21,13 +24,36 @@ export function useScrollProgress<T extends HTMLElement>() {
       if (!frame) frame = requestAnimationFrame(measure);
     };
 
-    measure();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", measure);
-    return () => {
+    const start = () => {
+      if (listening) return;
+      listening = true;
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", measure);
+    };
+    const stop = () => {
+      if (!listening) return;
+      listening = false;
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", measure);
       if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+    };
+    const sync = () => {
+      if (motion.matches) {
+        stop();
+        setProgress(0);
+      } else {
+        start();
+        measure();
+      }
+    };
+
+    sync();
+    motion.addEventListener("change", sync);
+
+    return () => {
+      stop();
+      motion.removeEventListener("change", sync);
     };
   }, []);
 
@@ -75,4 +101,35 @@ export function useMedia(query: string) {
   }, [query]);
 
   return matches;
+}
+
+/** True once the element has come near the viewport. */
+export function useInView<T extends HTMLElement>(rootMargin = "200px 0px") {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [rootMargin]);
+
+  return { ref, inView };
 }

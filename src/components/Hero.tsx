@@ -1,4 +1,4 @@
-import { projects } from "../content";
+import { email, positioningShort, projects } from "../content";
 import { useScrollProgress } from "../hooks";
 
 export function Hero() {
@@ -11,8 +11,8 @@ export function Hero() {
       <div className="hero-track" ref={ref}>
         <div className="hero-stage">
           <h1 className="hero-title">
-            <span className="hero-title__name">Rohan</span>
-            <span className="hero-title__sub">builds small tools</span>
+            <span className="hero-title__name">Rohan</span>{" "}
+            <span className="hero-title__sub">builds AI products and small tools</span>
           </h1>
 
           <div className="hero-media">
@@ -34,18 +34,16 @@ export function Hero() {
             </p>
           </div>
 
-          <p className="hero-lede">
-            Rohan, a developer in India. I build AI products and small web tools end to end: the
-            model, the interface, the launch.
-          </p>
+          <p className="hero-subline">{positioningShort}</p>
 
-          <button
-            type="button"
-            className="btn hero-cta"
-            onClick={() => document.getElementById("work")?.scrollIntoView({ block: "start" })}
-          >
-            See the work
-          </button>
+          <div className="hero-actions">
+            <a className="btn" href="#work">
+              See selected work
+            </a>
+            <a className="hero-secondary" href={`mailto:${email}`}>
+              Email me
+            </a>
+          </div>
         </div>
       </div>
     </section>

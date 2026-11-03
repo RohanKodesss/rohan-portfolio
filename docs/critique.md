@@ -1,5 +1,55 @@
 # Critique
 
+## Round 3, hire-ready pass
+
+Run against the production build on 3 November 2026 at 1440, 768, 390 and 375, in both themes, with
+keyboard-only navigation, reduced motion, and JavaScript disabled. Lighthouse accessibility: 100 in
+light and dark. The design-taste inspector reports 0 failures and one deliberate type-scale warning.
+
+```
+ROUND 3
+Seen in one second: the same poster, now with a job to do. The name, the one-line pitch, and the
+primary action all sit above the fold.
+Idea: unchanged. The loom holds the threads still while the work passes through.
+Live thing: unchanged weave card, now mounted only when it approaches the viewport.
+Scores: design 8 · usability 9 · creativity 8 · content 9 → overall 8.5
+Caps applied: none.
+```
+
+### What changed
+
+1. **One accent family.** Light keeps brick red `#a31c1b`; dark replaces lilac text and focus with
+   bright red `#dd5f58` on a warm forest night `#121412`. Sage `#7a9b76` is a new semantic token used
+   only for availability. All component colours read semantic custom properties.
+2. **The hero is one screen.** The track dropped from `230svh` to `140svh`; on a phone the sticky
+   stage unpins entirely. The H1 now says what Rohan does, the subline carries the positioning, and
+   "See selected work" plus "Email me" sit above the fold.
+3. **The positioning line is repeated.** It appears in full above the About story and in a shortened
+   form in the hero and contact section.
+4. **Work is proof, not a feature list.** Every project now carries Problem, What I built, Outcome and
+   My role, a visible stack line, a live link and a repository link. No invented metrics: the outcome
+   lines say early access, live, and open source.
+5. **Contact is a destination.** The nav has a persistent "Available" status link in both themes and
+   on mobile. Contact has a sage availability badge, a response-time promise, a plain email link, and
+   a short form that composes a `mailto:` message. The footer repeats the primary action. The
+   `<noscript>` fallback keeps a plain email path.
+6. **One trust element.** A live GitHub star count sits between the work and the story, with honest
+   fallback copy if the API is unavailable.
+7. **Accessibility and motion.** Focus rings use the accent token, with a cream ring on forest panels
+   and the bright red ring on deep grounds. Landmarks, one h1 and ordered headings are in place. The
+   decorative loom video is `aria-hidden`. Reduced motion unpins the scroll stages, stops the frame
+   animation and panel transitions, freezes scroll progress and stops the video. The weave card
+   mounts lazily behind a same-ratio placeholder. Theme swap and font load measured 0 CLS.
+
+### Remaining soft spots
+
+- The type scale still has more sizes than the inspector's five-size target. It is an editorial
+  choice: display, section, title, lead, body, small and caption all do different work.
+- The dark loom field remains a lilac and night mix rather than a named palette value.
+- The weave card is still a gingham-like draw rather than a full selvedge.
+- The Ethnocentric webfont is a subset of a desktop-licensed face; commercial web use needs the
+  appropriate license from Typodermic.
+
 ## Round 2, light and dark
 
 Run against the production build at `http://localhost:4173/?theme=light` and `?theme=dark` on

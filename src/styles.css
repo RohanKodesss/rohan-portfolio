@@ -1,5 +1,6 @@
 /* Palette: docs/design.md
-   paper #e8dcc6, forest #1f3b2e, red #a31c1b, lilac #cbb3e8, night #171717, night-deep #06110c
+   paper #e8dcc6, forest #1f3b2e, red #a31c1b, lilac #cbb3e8,
+   night #121412, night-deep #06110c, signal #7a9b76.
    The --c-* values never change. Everything else is semantic, with a dark override below. */
 
 :root {
@@ -8,19 +9,22 @@
   --c-paper: #e8dcc6;
   --c-forest: #1f3b2e;
   --c-red: #a31c1b;
+  --c-red-bright: #dd5f58;
   --c-lilac: #cbb3e8;
-  --c-night: #171717;
+  --c-night: #121412;
   --c-night-deep: #06110c;
+  --c-sage: #7a9b76;
 
   --bg: var(--c-paper);
   --ink: var(--c-forest);
-  --ink-muted: color-mix(in srgb, var(--c-forest) 82%, var(--c-paper));
+  --ink-muted: color-mix(in srgb, var(--c-forest) 91%, var(--c-paper));
   --surface: color-mix(in srgb, var(--c-forest) 6%, var(--c-paper));
   --surface-strong: color-mix(in srgb, var(--c-forest) 13%, var(--c-paper));
+  --placeholder: color-mix(in srgb, var(--c-forest) 78%, var(--c-paper));
 
   --panel: var(--c-forest);
   --panel-ink: var(--c-paper);
-  --panel-muted: color-mix(in srgb, var(--c-paper) 84%, var(--c-forest));
+  --panel-muted: color-mix(in srgb, var(--c-paper) 88%, var(--c-forest));
 
   --field: var(--c-lilac);
   --field-ink: var(--c-forest);
@@ -31,21 +35,24 @@
 
   --deep: var(--c-night-deep);
   --deep-ink: var(--c-paper);
-  --deep-muted: color-mix(in srgb, var(--c-paper) 74%, var(--c-night-deep));
+  --deep-muted: color-mix(in srgb, var(--c-paper) 80%, var(--c-night-deep));
+  --deep-accent: var(--c-red-bright);
   --footer: var(--c-night);
   --footer-ink: var(--c-paper);
-  --footer-muted: color-mix(in srgb, var(--c-paper) 74%, var(--c-night));
+  --footer-muted: color-mix(in srgb, var(--c-paper) 80%, var(--c-night));
 
   --accent: var(--c-red);
   --accent-hover: var(--c-forest);
   --accent-text: var(--c-red);
   --on-accent: var(--c-paper);
   --focus: var(--c-red);
+  --signal: var(--c-sage);
+  --signal-ink: var(--c-night);
 
   /* The woven card and the screenshot mounts stay paper in both themes. */
   --card: var(--c-paper);
   --card-ink: var(--c-forest);
-  --card-muted: color-mix(in srgb, var(--c-forest) 72%, var(--c-paper));
+  --card-muted: color-mix(in srgb, var(--c-forest) 75%, var(--c-paper));
   --card-thread: color-mix(in srgb, var(--c-forest) 9%, var(--c-paper));
 
   --font-display: "Ethnocentric", "Arial Black", "Helvetica Neue", sans-serif;
@@ -63,38 +70,42 @@
   --dur: 700ms;
 }
 
-/* Dark: night paper, cream ink. Red carries fills only, never small text. */
+/* Dark: warm forest night, cream ink, one red accent family.
+   The bright red is for text, focus and fills on night. */
 
 :root[data-theme="dark"] {
   color-scheme: dark;
 
   --bg: var(--c-night);
   --ink: var(--c-paper);
-  --ink-muted: color-mix(in srgb, var(--c-paper) 74%, var(--c-night));
+  --ink-muted: color-mix(in srgb, var(--c-paper) 76%, var(--c-night));
   --surface: color-mix(in srgb, var(--c-paper) 7%, var(--c-night));
   --surface-strong: color-mix(in srgb, var(--c-paper) 13%, var(--c-night));
 
   --panel: var(--c-night-deep);
   --panel-ink: var(--c-paper);
-  --panel-muted: color-mix(in srgb, var(--c-paper) 68%, var(--c-night-deep));
+  --panel-muted: color-mix(in srgb, var(--c-paper) 72%, var(--c-night-deep));
 
-  --field: color-mix(in srgb, var(--c-lilac) 18%, var(--c-night));
+  --field: color-mix(in srgb, var(--c-lilac) 14%, var(--c-night));
   --field-ink: var(--c-paper);
   --field-input: var(--c-paper);
   --field-input-ink: var(--c-forest);
-  --field-pick: var(--c-lilac);
+  --field-pick: var(--c-paper);
   --field-pick-ink: var(--c-forest);
 
-  --deep: #0b0b0b;
+  --deep: #0b0d0b;
   --deep-ink: var(--c-paper);
-  --deep-muted: color-mix(in srgb, var(--c-paper) 70%, #0b0b0b);
+  --deep-muted: color-mix(in srgb, var(--c-paper) 78%, var(--deep));
+  --deep-accent: var(--c-red-bright);
   --footer: var(--c-night);
   --footer-ink: var(--c-paper);
-  --footer-muted: color-mix(in srgb, var(--c-paper) 70%, var(--c-night));
+  --footer-muted: color-mix(in srgb, var(--c-paper) 76%, var(--c-night));
 
-  --accent-hover: color-mix(in srgb, var(--c-red) 82%, var(--c-night));
-  --accent-text: var(--c-lilac);
-  --focus: var(--c-lilac);
+  --accent: var(--c-red-bright);
+  --accent-hover: color-mix(in srgb, var(--c-red-bright) 82%, var(--c-paper));
+  --accent-text: var(--c-red-bright);
+  --on-accent: var(--c-night);
+  --focus: var(--c-red-bright);
 }
 
 @font-face {
@@ -147,7 +158,8 @@ a {
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -266,6 +278,22 @@ ol {
   color: var(--accent-text);
 }
 
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--signal);
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -312,7 +340,7 @@ ol {
 
 .hero-track {
   position: relative;
-  height: 230svh;
+  height: 140svh;
 }
 
 .hero-stage {
@@ -399,15 +427,15 @@ ol {
   font-weight: 600;
 }
 
-.hero-lede {
+.hero-subline {
   position: absolute;
   left: var(--gutter);
   bottom: 44px;
   z-index: 4;
-  max-width: 300px;
+  max-width: 340px;
   font-size: 17px;
   font-weight: 500;
-  line-height: 1.42;
+  line-height: 1.45;
 }
 
 .btn {
@@ -431,15 +459,45 @@ ol {
   background: var(--accent-hover);
 }
 
+.btn--deep {
+  background: var(--deep-accent);
+  color: var(--c-night);
+}
+
+.btn--deep:hover {
+  background: color-mix(in srgb, var(--deep-accent) 82%, var(--c-paper));
+}
+
 .btn:active {
   transform: translateY(1px);
 }
 
-.hero-cta {
+.hero-actions {
   position: absolute;
   right: var(--gutter);
   bottom: 44px;
   z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 200ms var(--ease);
+}
+
+.hero-secondary:hover {
+  color: var(--accent-text);
 }
 
 /* Work */
@@ -491,40 +549,6 @@ ol {
   color: var(--accent-text);
 }
 
-.work-current {
-  max-width: 34ch;
-  animation: current-in 520ms var(--ease) both;
-}
-
-@keyframes current-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.work-current__meta {
-  font-size: var(--t-small);
-  color: var(--ink-muted);
-}
-
-.work-current__desc {
-  margin-top: 14px;
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink);
-}
-
-.work-current__link {
-  display: inline-block;
-  margin-top: 18px;
-  font-size: 16px;
-}
-
 .work-index {
   display: grid;
   gap: 2px;
@@ -572,8 +596,8 @@ ol {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 40px clamp(24px, 3.6vw, 60px);
+  gap: 12px;
+  padding: 32px clamp(24px, 3.6vw, 60px);
   clip-path: inset(100% 0 0 0);
   visibility: hidden;
   pointer-events: none;
@@ -623,8 +647,16 @@ ol {
   color: var(--ink-muted);
 }
 
-.work-mount {
+.work-view__body {
   width: min(100%, 820px);
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(20px, 2.4vw, 28px);
+  align-items: start;
+}
+
+.work-mount {
+  width: 100%;
   background: var(--card);
   padding: clamp(10px, 1.1vw, 16px);
 }
@@ -636,10 +668,64 @@ ol {
   object-position: top center;
 }
 
+.work-view__case {
+  display: grid;
+  gap: 10px;
+}
+
 .work-view__line {
-  width: min(100%, 820px);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
+  line-height: 1.3;
+}
+
+.case {
+  display: grid;
+  gap: 7px;
+}
+
+.case > div {
+  display: grid;
+  gap: 1px;
+}
+
+.case dt {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--panel-muted);
+}
+
+.case dd {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.work-stack {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--panel-muted);
+}
+
+.work-stack span {
+  color: var(--panel-ink);
+  font-weight: 600;
+}
+
+.work-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 16px;
+}
+
+.work-view--surface .case dt,
+.work-view--surface .work-stack {
+  color: var(--ink-muted);
+}
+
+.work-view--surface .case dd,
+.work-view--surface .work-stack span {
+  color: var(--ink);
 }
 
 .work-view--panel .text-link {
@@ -647,26 +733,18 @@ ol {
 }
 
 .work-view--panel .text-link:hover {
-  color: var(--c-lilac);
-}
-
-.work-view__desc {
-  display: none;
-  width: min(100%, 820px);
-  max-width: 62ch;
-  font-size: 16px;
-  line-height: 1.5;
   color: var(--panel-ink);
-}
-
-.work-view--surface .work-view__desc {
-  color: var(--ink);
+  text-decoration-thickness: 2px;
 }
 
 /* About */
 
 .about {
   padding-top: clamp(120px, 15vw, 210px);
+}
+
+.proof + .about {
+  padding-top: clamp(72px, 8vw, 120px);
 }
 
 .about-panel {
@@ -680,6 +758,14 @@ ol {
 }
 
 .about .sec-title {
+  color: var(--panel-ink);
+}
+
+.about-position {
+  margin-top: clamp(28px, 3.2vw, 44px);
+  max-width: 52ch;
+  font-size: clamp(19px, 1.7vw, 23px);
+  line-height: 1.4;
   color: var(--panel-ink);
 }
 
@@ -740,7 +826,9 @@ ol {
 
 .earlier a:hover,
 .earlier a:hover span {
-  color: var(--c-lilac);
+  color: var(--panel-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .about-print {
@@ -765,6 +853,47 @@ ol {
   font-size: 16px;
   line-height: 1.45;
   color: var(--panel-ink);
+}
+
+/* Proof */
+
+.proof {
+  background: var(--surface);
+  padding: clamp(48px, 6vw, 80px) var(--gutter);
+}
+
+.proof-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 18px 40px;
+}
+
+.proof__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 14px;
+  max-width: 58ch;
+  font-size: clamp(19px, 1.8vw, 24px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.proof__number {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5vw, 68px);
+  line-height: 0.8;
+  color: var(--ink);
+}
+
+.proof__stars {
+  font-size: 16px;
+  color: var(--ink-muted);
+}
+
+.proof a {
+  font-size: 16px;
 }
 
 /* Loom */
@@ -828,7 +957,7 @@ ol {
 }
 
 .field input::placeholder {
-  color: color-mix(in srgb, var(--c-forest) 62%, var(--c-paper));
+  color: var(--placeholder);
 }
 
 .weaves {
@@ -891,6 +1020,12 @@ ol {
   max-width: 780px;
 }
 
+.loom-placeholder {
+  width: 100%;
+  aspect-ratio: 640 / 420;
+  background: var(--card);
+}
+
 .loom-film {
   margin: clamp(56px, 7vw, 96px) var(--gutter) 0;
 }
@@ -937,13 +1072,28 @@ ol {
   padding: 0 var(--gutter);
 }
 
+.contact-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--signal);
+  color: var(--signal-ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact-status .status-dot {
+  background: var(--signal-ink);
+}
+
 .contact .sec-title {
   color: var(--deep-ink);
 }
 
 .contact-lede {
   margin-top: 36px;
-  max-width: 34ch;
+  max-width: 46ch;
   font-size: var(--t-lead);
   line-height: 1.4;
 }
@@ -951,7 +1101,7 @@ ol {
 .contact-email {
   display: flex;
   flex-wrap: wrap;
-  margin-top: clamp(64px, 12vh, 140px);
+  margin-top: clamp(36px, 7vh, 80px);
   padding: 10px 0;
   font-size: clamp(24px, 4.3vw, 62px);
   line-height: 1;
@@ -973,8 +1123,69 @@ ol {
   color: var(--on-accent);
 }
 
+.contact-response {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  font-size: 16px;
+  color: var(--deep-muted);
+}
+
+.contact-form {
+  margin-top: clamp(36px, 5vw, 56px);
+  max-width: 720px;
+  display: grid;
+  gap: 16px;
+}
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background: var(--card);
+  color: var(--card-ink);
+  padding: 14px 16px;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--placeholder);
+}
+
+.contact-form .btn {
+  justify-self: start;
+}
+
+.contact-form__status {
+  min-height: 22px;
+  font-size: 16px;
+  color: var(--deep-muted);
+}
+
 .contact-meta {
-  margin-top: 44px;
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px 32px;
@@ -1003,6 +1214,37 @@ ol {
   font-size: var(--t-hero);
   line-height: 0.72;
   letter-spacing: -0.02em;
+}
+
+.footer-cta {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}
+
+.footer-email {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 200ms var(--ease);
+}
+
+.footer-email:hover {
+  color: var(--deep-accent);
+}
+
+.contact :focus-visible,
+.footer :focus-visible {
+  outline-color: var(--deep-accent);
+}
+
+.work-view--panel :focus-visible,
+.about-panel :focus-visible {
+  outline-color: var(--panel-ink);
 }
 
 .footer-row {
@@ -1067,15 +1309,18 @@ ol {
     text-align: left;
   }
 
-  .hero-lede {
+  .hero-subline {
     position: static;
-    max-width: 36ch;
+    max-width: 40ch;
     margin-top: 30px;
   }
 
-  .hero-cta {
+  .hero-actions {
     position: static;
     margin-top: 28px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   .work-track {
@@ -1089,21 +1334,28 @@ ol {
   }
 
   .work-left {
-    padding: 0 var(--gutter);
+    padding: clamp(48px, 8vw, 80px) var(--gutter) 0;
   }
 
-  .work-index,
-  .work-current {
+  .work-index {
     display: none;
   }
 
-  .work-view__desc {
-    display: block;
-    color: var(--panel-ink);
+  .work-view__body {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .work-view--surface .work-view__desc {
-    color: var(--ink);
+  .case dd {
+    font-size: 16px;
+  }
+
+  .work-view__line {
+    font-size: 17px;
+  }
+
+  .work-stack {
+    font-size: 15px;
   }
 
   .work-right {
@@ -1201,8 +1453,13 @@ ol {
     padding-top: 118px;
   }
 
-  .hero-cta {
+  .hero-actions {
     width: 100%;
+    align-items: flex-start;
+  }
+
+  .contact-form__row {
+    grid-template-columns: 1fr;
   }
 
   .work-view__head {
@@ -1232,6 +1489,15 @@ ol {
   .text-link,
   .nav__links a,
   .contact-email {
+    transition: none;
+  }
+
+  .hero-frame {
+    animation: none;
+  }
+
+  .work-view,
+  .work-view.is-active {
     transition: none;
   }
 
@@ -1272,14 +1538,17 @@ ol {
     text-align: left;
   }
 
-  .hero-lede {
+  .hero-subline {
     position: static;
     margin-top: 30px;
   }
 
-  .hero-cta {
+  .hero-actions {
     position: static;
     margin-top: 28px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
   .work-track {
@@ -1293,16 +1562,16 @@ ol {
   }
 
   .work-left {
-    padding: 0 var(--gutter);
+    padding: clamp(48px, 8vw, 80px) var(--gutter) 0;
   }
 
-  .work-index,
-  .work-current {
+  .work-index {
     display: none;
   }
 
-  .work-view__desc {
-    display: block;
+  .work-view__body {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .work-right {

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useMedia } from "../hooks";
+import { useInView, useMedia } from "../hooks";
 import { patterns, type PatternId } from "../content";
 
 const THREADS: Array<[string, string]> = [
@@ -89,6 +89,7 @@ export function Loom() {
   const [pattern, setPattern] = useState<PatternId>(initial.pattern);
   const [status, setStatus] = useState("");
   const reduced = useMedia("(prefers-reduced-motion: reduce)");
+  const { ref: cardRef, inView } = useInView<HTMLDivElement>();
 
   async function copyLink() {
     const url = new URL(window.location.href);
@@ -175,8 +176,12 @@ export function Loom() {
           </p>
         </form>
 
-        <div className="loom-card" data-reveal style={{ ["--d" as string]: "120ms" }}>
-          <WeaveCard name={name} pattern={pattern} />
+        <div className="loom-card" ref={cardRef} data-reveal style={{ ["--d" as string]: "120ms" }}>
+          {inView ? (
+            <WeaveCard name={name} pattern={pattern} />
+          ) : (
+            <div className="loom-placeholder" aria-hidden="true" />
+          )}
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import { earlier, facts } from "../content";
+import { earlier, facts, positioning } from "../content";
 
 export function About() {
   return (
@@ -9,7 +9,11 @@ export function About() {
             About
           </h2>
 
-          <p className="about-statement" data-reveal style={{ ["--d" as string]: "80ms" }}>
+          <p className="about-position" data-reveal style={{ ["--d" as string]: "80ms" }}>
+            {positioning}
+          </p>
+
+          <p className="about-statement" data-reveal style={{ ["--d" as string]: "120ms" }}>
             I named my first product after a loom: a frame that holds the threads still while the
             work passes through.
           </p>

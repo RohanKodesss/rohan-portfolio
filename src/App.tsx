@@ -2,6 +2,7 @@ import { useReveal } from "./hooks";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Work } from "./components/Work";
+import { Proof } from "./components/Proof";
 import { About } from "./components/About";
 import { Loom } from "./components/Loom";
 import { Contact } from "./components/Contact";
@@ -19,6 +20,7 @@ export default function App() {
       <main>
         <Hero />
         <Work />
+        <Proof />
         <About />
         <Loom />
         <Contact />

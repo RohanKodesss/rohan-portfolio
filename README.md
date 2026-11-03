@@ -64,7 +64,7 @@ docs/              brief, palette, critique
   [lurkr-bsr.vercel.app](https://lurkr-bsr.vercel.app).
 - Print: Kitagawa Utamaro, *A Woman Weaving at a Hand Loom*, 1796. The Met, public domain, via
   Wikimedia Commons.
-- Video: *Metier a tisser Jacquard 01* by Bastenbas, CC BY-SA 4.0, via Wikimedia Commons.
+- Video: *Métier à tisser Jacquard 01* by Bastenbas, CC BY-SA 4.0, via Wikimedia Commons.
 - Display type: Ethnocentric by Typodermic. The repository ships a subset only. Web use needs the
   appropriate webfont license from Typodermic; the desktop EULA in `docs/` is not a web license.
 - Text type: Instrument Sans, SIL Open Font License.

@@ -7,9 +7,9 @@ export function Footer() {
       <div className="footer-row">
         <p>Built with React, in India, 2026.</p>
         <p className="footer-credits">
-          Print: Kitagawa Utamaro, The Met, public domain. Loom video: Bastenbas, CC BY-SA 4.0,
-          via Wikimedia Commons. Project screenshots from inkloom.art, repoquestt.vercel.app and
-          lurkr-bsr.vercel.app.
+          Print: Kitagawa Utamaro, The Met, public domain. Loom video: Métier à tisser Jacquard 01,
+          Bastenbas, CC BY-SA 4.0, via Wikimedia Commons. Project screenshots from inkloom.art,
+          repoquestt.vercel.app and lurkr-bsr.vercel.app.
         </p>
       </div>
     </footer>

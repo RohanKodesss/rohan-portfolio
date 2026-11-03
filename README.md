@@ -6,6 +6,10 @@ The page is a pinned poster: the name holds still while the projects pass throug
 weave card at the end is a real tool, not a mockup. Type the name, choose a pattern, and the card
 draws itself, then copies a URL that reproduces it.
 
+The page has a light and a dark theme. It follows the system preference on the first visit, the nav
+toggle remembers the choice, and `?theme=light` or `?theme=dark` forces one for screenshots and
+testing.
+
 ## Stack
 
 - React 19 with TypeScript
@@ -35,11 +39,13 @@ a Chrome or Chromium executable. On this machine:
 
 ```bash
 CHROME_PATH="/Users/naveenkumar/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
-  node .agents/skills/design-taste-frontend/scripts/inspect.mjs http://localhost:4173/
+  node .agents/skills/design-taste-frontend/scripts/inspect.mjs "http://localhost:4173/?theme=light"
 ```
 
-Final state: 0 failures, 0 warnings. The written critique is in `docs/critique.md`. The recorded
-inspection is in `.taste-skill/` and is not committed.
+Run it again with `?theme=dark` for the night palette. Both themes pass at 1440, 768 and 390.
+
+Final state: 0 failures, 0 warnings in both themes. The written critique is in `docs/critique.md`.
+The recorded inspection is in `.taste-skill/` and is not committed.
 
 ## Structure
 
@@ -48,6 +54,7 @@ src/
   App.tsx          page composition and reveal observer
   content.ts       project copy, links, facts, email
   hooks.ts         scroll progress, reveal, media query
+  theme.ts         light and dark theme, storage, ?theme override
   styles.css       tokens, layout, responsive rules, reduced motion
   components/      Nav, Hero, Work, About, Loom, Contact, Footer
 public/

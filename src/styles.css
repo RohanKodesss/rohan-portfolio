@@ -1,27 +1,57 @@
-/* Tokens: every value below comes from docs/design.md
-   paper #e8dcc6, forest #1f3b2e, red #a31c1b, lilac #cbb3e8, night #171717, night-deep #06110c */
+/* Palette: docs/design.md
+   paper #e8dcc6, forest #1f3b2e, red #a31c1b, lilac #cbb3e8, night #171717, night-deep #06110c
+   The --c-* values never change. Everything else is semantic, with a dark override below. */
 
 :root {
-  --paper: #e8dcc6;
-  --forest: #1f3b2e;
-  --red: #a31c1b;
-  --lilac: #cbb3e8;
-  --night: #171717;
-  --night-deep: #06110c;
+  color-scheme: light;
 
-  --ink: var(--forest);
-  --ink-muted: color-mix(in srgb, var(--forest) 86%, var(--paper));
-  --paper-2: color-mix(in srgb, var(--forest) 6%, var(--paper));
-  --paper-3: color-mix(in srgb, var(--forest) 13%, var(--paper));
-  --on-forest: var(--paper);
-  --on-forest-muted: color-mix(in srgb, var(--paper) 84%, var(--forest));
-  --on-dark: var(--paper);
-  --on-dark-muted: color-mix(in srgb, var(--paper) 72%, var(--night));
+  --c-paper: #e8dcc6;
+  --c-forest: #1f3b2e;
+  --c-red: #a31c1b;
+  --c-lilac: #cbb3e8;
+  --c-night: #171717;
+  --c-night-deep: #06110c;
+
+  --bg: var(--c-paper);
+  --ink: var(--c-forest);
+  --ink-muted: color-mix(in srgb, var(--c-forest) 82%, var(--c-paper));
+  --surface: color-mix(in srgb, var(--c-forest) 6%, var(--c-paper));
+  --surface-strong: color-mix(in srgb, var(--c-forest) 13%, var(--c-paper));
+
+  --panel: var(--c-forest);
+  --panel-ink: var(--c-paper);
+  --panel-muted: color-mix(in srgb, var(--c-paper) 84%, var(--c-forest));
+
+  --field: var(--c-lilac);
+  --field-ink: var(--c-forest);
+  --field-input: var(--c-paper);
+  --field-input-ink: var(--c-forest);
+  --field-pick: var(--c-forest);
+  --field-pick-ink: var(--c-paper);
+
+  --deep: var(--c-night-deep);
+  --deep-ink: var(--c-paper);
+  --deep-muted: color-mix(in srgb, var(--c-paper) 74%, var(--c-night-deep));
+  --footer: var(--c-night);
+  --footer-ink: var(--c-paper);
+  --footer-muted: color-mix(in srgb, var(--c-paper) 74%, var(--c-night));
+
+  --accent: var(--c-red);
+  --accent-hover: var(--c-forest);
+  --accent-text: var(--c-red);
+  --on-accent: var(--c-paper);
+  --focus: var(--c-red);
+
+  /* The woven card and the screenshot mounts stay paper in both themes. */
+  --card: var(--c-paper);
+  --card-ink: var(--c-forest);
+  --card-muted: color-mix(in srgb, var(--c-forest) 72%, var(--c-paper));
+  --card-thread: color-mix(in srgb, var(--c-forest) 9%, var(--c-paper));
 
   --font-display: "Ethnocentric", "Arial Black", "Helvetica Neue", sans-serif;
   --font-text: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --t-hero: clamp(64px, min(14.5vw, 25svh), 216px);
+  --t-hero: clamp(60px, min(13.4vw, 22svh), 192px);
   --t-display: clamp(42px, 7.6vw, 108px);
   --t-title: clamp(26px, 3vw, 42px);
   --t-lead: clamp(19px, 1.7vw, 23px);
@@ -31,6 +61,40 @@
   --gutter: clamp(18px, 2.4vw, 34px);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --dur: 700ms;
+}
+
+/* Dark: night paper, cream ink. Red carries fills only, never small text. */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: var(--c-night);
+  --ink: var(--c-paper);
+  --ink-muted: color-mix(in srgb, var(--c-paper) 74%, var(--c-night));
+  --surface: color-mix(in srgb, var(--c-paper) 7%, var(--c-night));
+  --surface-strong: color-mix(in srgb, var(--c-paper) 13%, var(--c-night));
+
+  --panel: var(--c-night-deep);
+  --panel-ink: var(--c-paper);
+  --panel-muted: color-mix(in srgb, var(--c-paper) 68%, var(--c-night-deep));
+
+  --field: color-mix(in srgb, var(--c-lilac) 18%, var(--c-night));
+  --field-ink: var(--c-paper);
+  --field-input: var(--c-paper);
+  --field-input-ink: var(--c-forest);
+  --field-pick: var(--c-lilac);
+  --field-pick-ink: var(--c-forest);
+
+  --deep: #0b0b0b;
+  --deep-ink: var(--c-paper);
+  --deep-muted: color-mix(in srgb, var(--c-paper) 70%, #0b0b0b);
+  --footer: var(--c-night);
+  --footer-ink: var(--c-paper);
+  --footer-muted: color-mix(in srgb, var(--c-paper) 70%, var(--c-night));
+
+  --accent-hover: color-mix(in srgb, var(--c-red) 82%, var(--c-night));
+  --accent-text: var(--c-lilac);
+  --focus: var(--c-lilac);
 }
 
 @font-face {
@@ -62,7 +126,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-text);
   font-size: var(--t-body);
@@ -106,13 +170,13 @@ ol {
 }
 
 :focus-visible {
-  outline: 2px solid var(--red);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--red);
-  color: var(--paper);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .display,
@@ -140,8 +204,8 @@ ol {
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: var(--red);
-  color: var(--paper);
+  background: var(--accent);
+  color: var(--on-accent);
   padding: 12px 20px;
 }
 
@@ -189,6 +253,7 @@ ol {
 .nav__links {
   display: flex;
   gap: clamp(14px, 2vw, 32px);
+  margin-left: auto;
   font-size: 16px;
   font-weight: 500;
 }
@@ -198,14 +263,51 @@ ol {
 }
 
 .nav__links a:hover {
-  color: var(--red);
+  color: var(--accent-text);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: color 200ms var(--ease);
+}
+
+.theme-toggle:hover {
+  color: var(--accent-text);
+}
+
+.theme-toggle__icon {
+  display: flex;
+}
+
+.theme-toggle__icon svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+}
+
+.theme-toggle__label {
+  line-height: 1;
 }
 
 /* Hero */
 
 .hero {
   position: relative;
-  background: var(--paper);
+  background: var(--bg);
 }
 
 .hero-track {
@@ -223,7 +325,7 @@ ol {
 
 .hero-title {
   position: absolute;
-  top: 6svh;
+  top: clamp(88px, 12svh, 116px);
   left: var(--gutter);
   right: var(--gutter);
   z-index: 3;
@@ -257,7 +359,7 @@ ol {
 .hero-window {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--paper-3);
+  background: var(--surface-strong);
 }
 
 .hero-frame {
@@ -314,8 +416,8 @@ ol {
   justify-content: center;
   min-height: 52px;
   padding: 0 26px;
-  background: var(--red);
-  color: var(--paper);
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -326,7 +428,7 @@ ol {
 }
 
 .btn:hover {
-  background: var(--forest);
+  background: var(--accent-hover);
 }
 
 .btn:active {
@@ -343,7 +445,7 @@ ol {
 /* Work */
 
 .work {
-  background: var(--paper);
+  background: var(--bg);
 }
 
 .work-track {
@@ -386,7 +488,7 @@ ol {
 }
 
 .text-link:hover {
-  color: var(--red);
+  color: var(--accent-text);
 }
 
 .work-current {
@@ -490,13 +592,13 @@ ol {
     visibility 0s linear 0s;
 }
 
-.work-view--forest {
-  background: var(--forest);
-  color: var(--on-forest);
+.work-view--panel {
+  background: var(--panel);
+  color: var(--panel-ink);
 }
 
-.work-view--paper {
-  background: var(--paper-2);
+.work-view--surface {
+  background: var(--surface);
   color: var(--ink);
 }
 
@@ -514,16 +616,16 @@ ol {
 
 .work-view__meta {
   font-size: var(--t-small);
-  color: var(--on-forest-muted);
+  color: var(--panel-muted);
 }
 
-.work-view--paper .work-view__meta {
+.work-view--surface .work-view__meta {
   color: var(--ink-muted);
 }
 
 .work-mount {
   width: min(100%, 820px);
-  background: var(--paper);
+  background: var(--card);
   padding: clamp(10px, 1.1vw, 16px);
 }
 
@@ -540,12 +642,12 @@ ol {
   font-weight: 500;
 }
 
-.work-view--forest .text-link {
-  color: var(--on-forest);
+.work-view--panel .text-link {
+  color: var(--panel-ink);
 }
 
-.work-view--forest .text-link:hover {
-  color: var(--lilac);
+.work-view--panel .text-link:hover {
+  color: var(--c-lilac);
 }
 
 .work-view__desc {
@@ -554,10 +656,10 @@ ol {
   max-width: 62ch;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--on-forest);
+  color: var(--panel-ink);
 }
 
-.work-view--paper .work-view__desc {
+.work-view--surface .work-view__desc {
   color: var(--ink);
 }
 
@@ -568,8 +670,8 @@ ol {
 }
 
 .about-panel {
-  background: var(--forest);
-  color: var(--on-forest);
+  background: var(--panel);
+  color: var(--panel-ink);
   padding: clamp(56px, 6.4vw, 100px) var(--gutter);
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -578,7 +680,7 @@ ol {
 }
 
 .about .sec-title {
-  color: var(--on-forest);
+  color: var(--panel-ink);
 }
 
 .about-statement {
@@ -598,7 +700,7 @@ ol {
 
 .fact dt {
   font-size: var(--t-small);
-  color: var(--on-forest-muted);
+  color: var(--panel-muted);
 }
 
 .fact dd {
@@ -627,18 +729,18 @@ ol {
   flex-wrap: wrap;
   gap: 2px 12px;
   font-size: 16px;
-  color: var(--on-forest-muted);
+  color: var(--panel-muted);
   transition: color 200ms var(--ease);
 }
 
 .earlier a span:first-child {
-  color: var(--on-forest);
+  color: var(--panel-ink);
   font-weight: 500;
 }
 
 .earlier a:hover,
 .earlier a:hover span {
-  color: var(--lilac);
+  color: var(--c-lilac);
 }
 
 .about-print {
@@ -662,7 +764,7 @@ ol {
   max-width: 46ch;
   font-size: 16px;
   line-height: 1.45;
-  color: var(--on-forest);
+  color: var(--panel-ink);
 }
 
 /* Loom */
@@ -670,8 +772,8 @@ ol {
 .loom {
   margin-top: clamp(88px, 10vw, 150px);
   padding: clamp(80px, 10vw, 130px) 0;
-  background: var(--lilac);
-  color: var(--forest);
+  background: var(--field);
+  color: var(--field-ink);
 }
 
 .loom-head,
@@ -720,13 +822,13 @@ ol {
   padding: 0 16px;
   border: 0;
   border-radius: 0;
-  background: var(--paper);
-  color: var(--forest);
+  background: var(--field-input);
+  color: var(--field-input-ink);
   font-size: 18px;
 }
 
 .field input::placeholder {
-  color: color-mix(in srgb, var(--forest) 45%, var(--paper));
+  color: color-mix(in srgb, var(--c-forest) 62%, var(--c-paper));
 }
 
 .weaves {
@@ -756,7 +858,8 @@ ol {
   place-items: center;
   height: 46px;
   padding: 0 20px;
-  background: var(--paper);
+  background: var(--field-input);
+  color: var(--field-input-ink);
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -766,17 +869,17 @@ ol {
 }
 
 .weave-option input:checked + span {
-  background: var(--forest);
-  color: var(--paper);
+  background: var(--field-pick);
+  color: var(--field-pick-ink);
 }
 
 .weave-option input:focus-visible + span {
-  outline: 2px solid var(--red);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
 
 .weave-option:hover span {
-  background: color-mix(in srgb, var(--paper) 68%, var(--lilac));
+  background: color-mix(in srgb, var(--c-paper) 68%, var(--c-lilac));
 }
 
 .loom-status {
@@ -796,7 +899,7 @@ ol {
   display: block;
   width: 100%;
   height: auto;
-  background: var(--forest);
+  background: var(--panel);
 }
 
 .loom-film figcaption {
@@ -813,20 +916,20 @@ ol {
 }
 
 .weave__name {
-  fill: var(--forest);
+  fill: var(--card-ink);
 }
 
 .weave__sub {
   font-family: var(--font-text);
   font-size: 16px;
-  fill: color-mix(in srgb, var(--forest) 72%, var(--paper));
+  fill: var(--card-muted);
 }
 
 /* Contact */
 
 .contact {
-  background: var(--night-deep);
-  color: var(--on-dark);
+  background: var(--deep);
+  color: var(--deep-ink);
   padding: clamp(80px, 10vw, 130px) 0 clamp(64px, 8vw, 96px);
 }
 
@@ -835,7 +938,7 @@ ol {
 }
 
 .contact .sec-title {
-  color: var(--on-dark);
+  color: var(--deep-ink);
 }
 
 .contact-lede {
@@ -866,8 +969,8 @@ ol {
 
 .contact-email:hover,
 .contact-email:focus-visible {
-  background: var(--red);
-  color: var(--paper);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .contact-meta {
@@ -876,11 +979,11 @@ ol {
   flex-wrap: wrap;
   gap: 12px 32px;
   font-size: 16px;
-  color: var(--on-dark-muted);
+  color: var(--deep-muted);
 }
 
 .contact-meta a {
-  color: var(--on-dark);
+  color: var(--deep-ink);
 }
 
 .contact-meta a:hover {
@@ -891,8 +994,8 @@ ol {
 /* Footer */
 
 .footer {
-  background: var(--night);
-  color: var(--on-dark);
+  background: var(--footer);
+  color: var(--footer-ink);
   padding: 56px var(--gutter) 32px;
 }
 
@@ -910,7 +1013,7 @@ ol {
   gap: 16px 48px;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--on-dark-muted);
+  color: var(--footer-muted);
 }
 
 .footer-credits {
@@ -996,10 +1099,10 @@ ol {
 
   .work-view__desc {
     display: block;
-    color: var(--on-forest);
+    color: var(--panel-ink);
   }
 
-  .work-view--paper .work-view__desc {
+  .work-view--surface .work-view__desc {
     color: var(--ink);
   }
 
@@ -1063,20 +1166,43 @@ ol {
 
 @media (max-width: 520px) {
   .nav {
-    padding: 16px var(--gutter);
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding: 14px var(--gutter) 0;
+  }
+
+  .nav__mark {
+    order: 1;
+    font-size: 16px;
+  }
+
+  .theme-toggle {
+    order: 2;
+    width: 44px;
+    margin-left: auto;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .theme-toggle__label {
+    display: none;
+  }
+
+  .nav__links {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: space-between;
+    margin-left: 0;
+    gap: 12px;
+    font-size: 16px;
+  }
+
+  .hero-stage {
+    padding-top: 118px;
   }
 
   .hero-cta {
     width: 100%;
-  }
-
-  .nav__mark {
-    font-size: 16px;
-  }
-
-  .nav__links {
-    gap: 14px;
-    font-size: 16px;
   }
 
   .work-view__head {
@@ -1195,5 +1321,12 @@ ol {
 
   .work-mount img {
     aspect-ratio: 4 / 3;
+  }
+}
+
+/* The two-row nav needs its extra room whether or not motion is reduced. */
+@media (max-width: 520px) {
+  .hero-stage {
+    padding-top: 118px;
   }
 }

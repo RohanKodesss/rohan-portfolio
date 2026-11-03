@@ -9,7 +9,7 @@ export type Project = {
   linkLabel: string;
   image: string;
   alt: string;
-  tone: "forest" | "paper";
+  tone: "panel" | "surface";
 };
 
 export const projects: Project[] = [
@@ -25,7 +25,7 @@ export const projects: Project[] = [
     linkLabel: "inkloom.art",
     image: "/images/inkloom.jpg",
     alt: "The Inkloom home page, headlined Logos, built the way designers build them.",
-    tone: "forest",
+    tone: "panel",
   },
   {
     id: "repoquest",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     linkLabel: "repoquestt.vercel.app",
     image: "/images/repoquest.jpg",
     alt: "The RepoQuest start screen: a repository URL field and a Check Repo button.",
-    tone: "paper",
+    tone: "surface",
   },
   {
     id: "lurkr",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     linkLabel: "lurkr-bsr.vercel.app",
     image: "/images/lurkr.jpg",
     alt: "The Lurkr home page: a security scanner with a target field and four live signal panels.",
-    tone: "forest",
+    tone: "panel",
   },
 ];
 

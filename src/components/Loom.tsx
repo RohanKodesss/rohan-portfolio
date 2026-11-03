@@ -3,9 +3,9 @@ import { useMedia } from "../hooks";
 import { patterns, type PatternId } from "../content";
 
 const THREADS: Array<[string, string]> = [
-  ["--forest", "--paper-2"],
-  ["--red", "--paper-2"],
-  ["--lilac", "--paper-2"],
+  ["--c-forest", "--card-thread"],
+  ["--c-red", "--card-thread"],
+  ["--c-lilac", "--card-thread"],
 ];
 
 const COLS = 26;
@@ -44,7 +44,7 @@ function WeaveCard({ name, pattern }: { name: string; pattern: PatternId }) {
       role="img"
       aria-label={`A woven card for ${clean}, ${label.toLowerCase()} weave, in forest green, deep red and lilac.`}
     >
-      <rect width="640" height="420" style={{ fill: "var(--paper)" }} />
+      <rect width="640" height="420" style={{ fill: "var(--card)" }} />
       <text className="weave__name" x={X0} y={94} fontSize={size}>
         {upper}
       </text>

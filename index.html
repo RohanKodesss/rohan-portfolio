@@ -21,6 +21,34 @@
     <link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
     <script>
       document.documentElement.classList.add("js");
+
+      (function () {
+        var theme = "light";
+
+        try {
+          var param = new URLSearchParams(window.location.search).get("theme");
+          var saved = window.localStorage.getItem("rohan-theme");
+
+          if (param === "dark" || param === "light") {
+            theme = param;
+          } else if (saved === "dark" || saved === "light") {
+            theme = saved;
+          } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        } catch (error) {
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        }
+
+        document.documentElement.dataset.theme = theme;
+
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+          meta.setAttribute("content", theme === "dark" ? "#171717" : "#e8dcc6");
+        }
+      })();
     </script>
   </head>
   <body>

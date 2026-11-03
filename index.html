@@ -15,7 +15,7 @@
       content="AI products and small web tools, built end to end: model, interface, launch. Inkloom, RepoQuest, Lurkr, and a card weaver built into this page."
     />
     <meta name="twitter:card" content="summary" />
-    <meta name="theme-color" content="#e8dcc6" />
+    <meta name="theme-color" content="#EDE3D0" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" href="/fonts/ethnocentric-subset.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
@@ -46,7 +46,31 @@
 
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) {
-          meta.setAttribute("content", theme === "dark" ? "#121412" : "#e8dcc6");
+          meta.setAttribute("content", theme === "dark" ? "#0D1615" : "#EDE3D0");
+        }
+
+        // Let the first paint finish before the paper texture is rasterized.
+        var revealTexture = function () {
+          document.documentElement.classList.add("is-textured");
+        };
+
+        if ("PerformanceObserver" in window) {
+          try {
+            var paintObserver = new PerformanceObserver(function (list) {
+              var painted = list.getEntries().some(function (entry) {
+                return entry.name === "first-contentful-paint";
+              });
+              if (painted) {
+                paintObserver.disconnect();
+                revealTexture();
+              }
+            });
+            paintObserver.observe({ type: "paint", buffered: true });
+          } catch (error) {
+            window.addEventListener("load", revealTexture);
+          }
+        } else {
+          window.addEventListener("load", revealTexture);
         }
       })();
     </script>
@@ -54,7 +78,7 @@
   <body>
     <div id="root"></div>
     <noscript>
-      <div style="padding: 32px; font-family: system-ui, sans-serif; background: #e8dcc6; color: #1f3b2e">
+      <div style="padding: 32px; font-family: system-ui, sans-serif; background: #EDE3D0; color: #1C2E2A">
         <h1>Rohan builds AI products and small tools</h1>
         <p>
           This page runs on React. Enable JavaScript to see the work, or write to

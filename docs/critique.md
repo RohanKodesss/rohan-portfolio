@@ -18,9 +18,9 @@ Caps applied: none.
 
 ### What changed
 
-1. **One accent family.** Light keeps brick red `#a31c1b`; dark replaces lilac text and focus with
-   bright red `#dd5f58` on a warm forest night `#121412`. Sage `#7a9b76` is a new semantic token used
-   only for availability. All component colours read semantic custom properties.
+1. **One accent family.** Light uses terracotta `#A54329` on sand `#EDE3D0`; dark brightens it to
+   `#D9784E` on teal night `#0D1615`. Moss `#69844F` is a semantic token used only for availability.
+   All component colours read semantic custom properties.
 2. **The hero is one screen.** The track dropped from `230svh` to `140svh`; on a phone the sticky
    stage unpins entirely. The H1 now says what Rohan does, the subline carries the positioning, and
    "See selected work" plus "Email me" sit above the fold.
@@ -35,8 +35,8 @@ Caps applied: none.
    `<noscript>` fallback keeps a plain email path.
 6. **One trust element.** A live GitHub star count sits between the work and the story, with honest
    fallback copy if the API is unavailable.
-7. **Accessibility and motion.** Focus rings use the accent token, with a cream ring on forest panels
-   and the bright red ring on deep grounds. Landmarks, one h1 and ordered headings are in place. The
+7. **Accessibility and motion.** Focus rings use the terracotta accent, with the brighter terracotta
+   on deep grounds and the same hue on panels. Landmarks, one h1 and ordered headings are in place. The
    decorative loom video is `aria-hidden`. Reduced motion unpins the scroll stages, stops the frame
    animation and panel transitions, freezes scroll progress and stops the video. The weave card
    mounts lazily behind a same-ratio placeholder. Theme swap and font load measured 0 CLS.
@@ -45,7 +45,8 @@ Caps applied: none.
 
 - The type scale still has more sizes than the inspector's five-size target. It is an editorial
   choice: display, section, title, lead, body, small and caption all do different work.
-- The dark loom field remains a lilac and night mix rather than a named palette value.
+- The loom field is a named sand token in light and a named night token in dark; it is the one
+  section ground that sits below the page surface in both themes.
 - The weave card is still a gingham-like draw rather than a full selvedge.
 - The Ethnocentric webfont is a subset of a desktop-licensed face; commercial web use needs the
   appropriate license from Typodermic.
@@ -70,9 +71,9 @@ Caps applied: none.
 
 1. **Dark mode is now a first-class theme, not an inverted filter.** `data-theme` on `<html>` drives a
    semantic token layer (`--bg`, `--ink`, `--surface`, `--panel`, `--field`, `--deep`, `--accent-text`).
-   The `--c-*` palette values never move. Night `#171717` is the page, `#06110c` is the about and work
-   panel, and the red carries fills only. Red never becomes small text on night: muted text is cream,
-   hover text is lilac, so body contrast stays above 7:1.
+   The `--c-*` palette values never move. Teal night `#0D1615` is the page, `#0A1211` is the about and
+   work panel, and terracotta carries interaction only. Muted text is sand, hover text is bright
+   terracotta, so body contrast stays above 7:1.
 2. **The theme is chosen before the first paint.** A small inline script in `index.html` reads
    `?theme=`, then `localStorage`, then `prefers-color-scheme`, and sets the attribute before React
    mounts. There is no flash of the wrong ground.
@@ -84,14 +85,13 @@ Caps applied: none.
    the tops of the cream letters, which turned into cream-on-cream in dark mode. The wordmark now
    starts below the nav (`clamp(88px, 12svh, 116px)`), the cap is 192px, and the links are right
    aligned. The poster still bleeds to the edge but nothing overlaps.
-5. **The weave card and the screenshot mounts are constants.** They stay paper `#e8dcc6` with forest
-   thread, so the small tool reads the same in both themes and the screenshots keep a neutral mat.
+5. **The weave card and the screenshot mounts are flat stock.** They read the elevated surface token
+   in each theme, so the small tool never carries the page texture and the screenshots keep a clean mat.
 
 ### Remaining soft spots
 
-- The dark loom field is a lilac and night mix rather than a named palette value. It is the one
-  derived ground on the page; a pure `#171717` field lost the loom's colour and a full lilac field
-  fought the night page.
+- The dark loom field is the sunken night token. It is the one section ground that sits below the
+  page surface in both themes; the weave card stays one step lighter so it still reads as an object.
 - The left work column keeps a deliberate rest between the intro and the active project note. It is a
   column, not a hole, but it is the quietest screen on the page.
 - The weave card is a gingham-like draw. It reads as cloth at card scale but is the simplest object on

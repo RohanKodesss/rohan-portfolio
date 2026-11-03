@@ -1,59 +1,100 @@
-/* Palette: docs/design.md
-   paper #e8dcc6, forest #1f3b2e, red #a31c1b, lilac #cbb3e8,
-   night #121412, night-deep #06110c, signal #7a9b76.
-   The --c-* values never change. Everything else is semantic, with a dark override below. */
+/* Palette — fixed values, never change.
+   Light: sand #EDE3D0 / #F3EAD9 / #E6DAC3, teal #1C2E2A / #0F3D3A,
+   terracotta #A54329 / #8F3A24, moss #69844F.
+   Dark: teal night #0D1615 / #14201E / #0A1211, sand ink #E6D8C1 / #EFE4CE,
+   terracotta #D9784E / #E88A60, moss #93AE7C.
+   Roles: teal = structure, sand = surface, terracotta = interaction, moss = status only.
+   The --c-* primitives are fixed; the semantic layer is what dark overrides.
+
+   Token roles:
+   --bg page ground; --bg-elevated flat cards, fields and inputs;
+   --bg-sunken loom ground, panels and insets; --ink body text;
+   --ink-strong headings and panel ground; --muted secondary text;
+   --line hairlines only; --accent interaction and focus;
+   --accent-strong hover and pressed; --accent-soft selection and tags;
+   --signal availability and success only; --on-accent text on terracotta;
+   --panel about/work panel; --field loom band; --deep contact ground;
+   --footer footer ground; --card flat weave card and screenshot mounts. */
 
 :root {
   color-scheme: light;
 
-  --c-paper: #e8dcc6;
-  --c-forest: #1f3b2e;
-  --c-red: #a31c1b;
-  --c-red-bright: #dd5f58;
-  --c-lilac: #cbb3e8;
-  --c-night: #121412;
-  --c-night-deep: #06110c;
-  --c-sage: #7a9b76;
+  --c-sand: #EDE3D0;
+  --c-sand-lift: #F3EAD9;
+  --c-sand-sink: #E6DAC3;
+  --c-teal: #1C2E2A;
+  --c-teal-strong: #0F3D3A;
+  --c-teal-muted: #404E47;
+  --c-terracotta: #A54329;
+  --c-terracotta-strong: #8F3A24;
+  --c-moss: #69844F;
+  --c-terracotta-light: #D9784E;
+  --c-terracotta-light-strong: #E88A60;
+  --c-night: #0D1615;
+  --c-night-lift: #14201E;
+  --c-night-sink: #0A1211;
+  --c-sand-ink: #E6D8C1;
+  --c-sand-ink-strong: #EFE4CE;
+  --c-sand-muted: #B9AE9B;
+  --c-moss-light: #93AE7C;
 
-  --bg: var(--c-paper);
-  --ink: var(--c-forest);
-  --ink-muted: color-mix(in srgb, var(--c-forest) 91%, var(--c-paper));
-  --surface: color-mix(in srgb, var(--c-forest) 6%, var(--c-paper));
-  --surface-strong: color-mix(in srgb, var(--c-forest) 13%, var(--c-paper));
-  --placeholder: color-mix(in srgb, var(--c-forest) 78%, var(--c-paper));
+  /* Ground and ink. */
+  --bg: var(--c-sand);
+  --bg-elevated: var(--c-sand-lift);
+  --bg-sunken: var(--c-sand-sink);
+  --ink: var(--c-teal);
+  --ink-strong: var(--c-teal-strong);
+  --muted: var(--c-teal-muted);
+  --line: color-mix(in srgb, var(--c-teal) 14%, transparent);
 
-  --panel: var(--c-forest);
-  --panel-ink: var(--c-paper);
-  --panel-muted: color-mix(in srgb, var(--c-paper) 88%, var(--c-forest));
+  /* Interaction. */
+  --accent: var(--c-terracotta);
+  --accent-strong: var(--c-terracotta-strong);
+  --accent-soft: color-mix(in srgb, var(--c-terracotta) 10%, var(--c-sand));
+  --accent-hover: var(--accent-strong);
+  --accent-text: var(--accent);
+  --on-accent: var(--c-sand-lift);
+  --focus: var(--accent);
 
-  --field: var(--c-lilac);
-  --field-ink: var(--c-forest);
-  --field-input: var(--c-paper);
-  --field-input-ink: var(--c-forest);
-  --field-pick: var(--c-forest);
-  --field-pick-ink: var(--c-paper);
+  /* Status only. */
+  --signal: var(--c-moss);
+  --signal-ink: var(--c-night-sink);
 
-  --deep: var(--c-night-deep);
-  --deep-ink: var(--c-paper);
-  --deep-muted: color-mix(in srgb, var(--c-paper) 80%, var(--c-night-deep));
-  --deep-accent: var(--c-red-bright);
-  --footer: var(--c-night);
-  --footer-ink: var(--c-paper);
-  --footer-muted: color-mix(in srgb, var(--c-paper) 80%, var(--c-night));
+  /* Existing semantic aliases, mapped onto the four roles. */
+  --ink-muted: var(--muted);
+  --surface: var(--bg-elevated);
+  --surface-strong: var(--bg-sunken);
+  --placeholder: var(--muted);
 
-  --accent: var(--c-red);
-  --accent-hover: var(--c-forest);
-  --accent-text: var(--c-red);
-  --on-accent: var(--c-paper);
-  --focus: var(--c-red);
-  --signal: var(--c-sage);
-  --signal-ink: var(--c-night);
+  --panel: var(--ink-strong);
+  --panel-ink: var(--c-sand-lift);
+  --panel-muted: color-mix(in srgb, var(--c-sand-lift) 80%, var(--panel));
 
-  /* The woven card and the screenshot mounts stay paper in both themes. */
-  --card: var(--c-paper);
-  --card-ink: var(--c-forest);
-  --card-muted: color-mix(in srgb, var(--c-forest) 75%, var(--c-paper));
-  --card-thread: color-mix(in srgb, var(--c-forest) 9%, var(--c-paper));
+  --field: var(--bg-sunken);
+  --field-ink: var(--ink);
+  --field-input: var(--bg-elevated);
+  --field-input-ink: var(--ink);
+  --field-pick: var(--ink-strong);
+  --field-pick-ink: var(--c-sand-lift);
+
+  --deep: var(--ink-strong);
+  --deep-ink: var(--c-sand-lift);
+  --deep-muted: color-mix(in srgb, var(--c-sand-lift) 80%, var(--deep));
+  --deep-accent: var(--c-terracotta-light);
+  --footer: var(--c-teal);
+  --footer-ink: var(--c-sand-lift);
+  --footer-muted: color-mix(in srgb, var(--c-sand-lift) 80%, var(--footer));
+
+  /* Flat stock: cards, inputs and the woven card never carry texture. */
+  --card: var(--bg-elevated);
+  --card-ink: var(--ink);
+  --card-muted: var(--muted);
+  --card-thread: color-mix(in srgb, var(--ink) 14%, var(--bg-elevated));
+
+  /* Crushed paper: one fixed seed, lit from the upper left. */
+  --paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='1280' viewBox='0 0 1280 1280'%3E%3Cfilter id='p' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='5' seed='7' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23F3EAD9' surfaceScale='2.5' diffuseConstant='1' result='lit'%3E%3CfeDistantLight azimuth='235' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='1280' height='1280' filter='url(%23p)'/%3E%3C/svg%3E");
+  --paper-alpha: 0.065;
+  --paper-blend: multiply;
 
   --font-display: "Ethnocentric", "Arial Black", "Helvetica Neue", sans-serif;
   --font-text: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -70,42 +111,63 @@
   --dur: 700ms;
 }
 
-/* Dark: warm forest night, cream ink, one red accent family.
-   The bright red is for text, focus and fills on night. */
+/* Dark: the same brand after sunset. Sand becomes ink, teal becomes ground.
+   Terracotta and moss brighten by the same hue; no new colours. */
 
 :root[data-theme="dark"] {
   color-scheme: dark;
 
   --bg: var(--c-night);
-  --ink: var(--c-paper);
-  --ink-muted: color-mix(in srgb, var(--c-paper) 76%, var(--c-night));
-  --surface: color-mix(in srgb, var(--c-paper) 7%, var(--c-night));
-  --surface-strong: color-mix(in srgb, var(--c-paper) 13%, var(--c-night));
+  --bg-elevated: var(--c-night-lift);
+  --bg-sunken: var(--c-night-sink);
+  --ink: var(--c-sand-ink);
+  --ink-strong: var(--c-sand-ink-strong);
+  --muted: var(--c-sand-muted);
+  --line: color-mix(in srgb, var(--c-sand-ink) 17%, transparent);
 
-  --panel: var(--c-night-deep);
-  --panel-ink: var(--c-paper);
-  --panel-muted: color-mix(in srgb, var(--c-paper) 72%, var(--c-night-deep));
-
-  --field: color-mix(in srgb, var(--c-lilac) 14%, var(--c-night));
-  --field-ink: var(--c-paper);
-  --field-input: var(--c-paper);
-  --field-input-ink: var(--c-forest);
-  --field-pick: var(--c-paper);
-  --field-pick-ink: var(--c-forest);
-
-  --deep: #0b0d0b;
-  --deep-ink: var(--c-paper);
-  --deep-muted: color-mix(in srgb, var(--c-paper) 78%, var(--deep));
-  --deep-accent: var(--c-red-bright);
-  --footer: var(--c-night);
-  --footer-ink: var(--c-paper);
-  --footer-muted: color-mix(in srgb, var(--c-paper) 76%, var(--c-night));
-
-  --accent: var(--c-red-bright);
-  --accent-hover: color-mix(in srgb, var(--c-red-bright) 82%, var(--c-paper));
-  --accent-text: var(--c-red-bright);
+  --accent: var(--c-terracotta-light);
+  --accent-strong: var(--c-terracotta-light-strong);
+  --accent-soft: color-mix(in srgb, var(--c-terracotta-light) 14%, var(--c-night));
+  --accent-hover: var(--accent-strong);
+  --accent-text: var(--accent);
   --on-accent: var(--c-night);
-  --focus: var(--c-red-bright);
+  --focus: var(--accent);
+
+  --signal: var(--c-moss-light);
+  --signal-ink: var(--c-night-sink);
+
+  --ink-muted: var(--muted);
+  --surface: var(--bg-elevated);
+  --surface-strong: var(--bg-sunken);
+  --placeholder: var(--muted);
+
+  --panel: var(--bg-sunken);
+  --panel-ink: var(--ink-strong);
+  --panel-muted: color-mix(in srgb, var(--ink) 78%, var(--panel));
+
+  --field: var(--bg-sunken);
+  --field-ink: var(--ink);
+  --field-input: var(--bg-elevated);
+  --field-input-ink: var(--ink);
+  --field-pick: var(--ink-strong);
+  --field-pick-ink: var(--bg);
+
+  --deep: var(--bg-sunken);
+  --deep-ink: var(--ink-strong);
+  --deep-muted: color-mix(in srgb, var(--ink) 78%, var(--deep));
+  --deep-accent: var(--accent-strong);
+  --footer: var(--bg-sunken);
+  --footer-ink: var(--ink);
+  --footer-muted: color-mix(in srgb, var(--ink) 78%, var(--footer));
+
+  --card: var(--bg-elevated);
+  --card-ink: var(--ink);
+  --card-muted: var(--muted);
+  --card-thread: color-mix(in srgb, var(--ink) 16%, var(--bg-elevated));
+
+  --paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='1280' viewBox='0 0 1280 1280'%3E%3Cfilter id='p' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='5' seed='7' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23E6D8C1' surfaceScale='2.5' diffuseConstant='1' result='lit'%3E%3CfeDistantLight azimuth='235' elevation='55'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='1280' height='1280' filter='url(%23p)'/%3E%3C/svg%3E");
+  --paper-alpha: 0.042;
+  --paper-blend: soft-light;
 }
 
 @font-face {
@@ -137,6 +199,8 @@ html {
 
 body {
   margin: 0;
+  position: relative;
+  isolation: isolate;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-text);
@@ -144,6 +208,41 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* The crushed sheet sits below every piece of content. The second copy at a
+   different scale breaks any tile read without changing the geometry or seed. */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: none;
+  pointer-events: none;
+  background-image: var(--paper-texture);
+  background-repeat: repeat;
+  background-attachment: scroll;
+  mix-blend-mode: var(--paper-blend);
+}
+
+/* The texture is attached after the first paint so its one-time rasterization
+   never blocks the text. It is a single static paint, not an animation. */
+html.is-textured body::before,
+html.is-textured body::after {
+  display: block;
+}
+
+body::before {
+  background-size: 1280px 1280px;
+  opacity: var(--paper-alpha);
+}
+
+body::after {
+  background-size: 1730px 1730px;
+  background-position: 420px 310px;
+  opacity: calc(var(--paper-alpha) * 0.35);
 }
 
 img {
@@ -187,8 +286,8 @@ ol {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--accent-soft);
+  color: var(--ink-strong);
 }
 
 .display,
@@ -299,7 +398,7 @@ ol {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 44px;
+  min-width: 68px;
   min-height: 44px;
   padding: 0;
   border: 0;
@@ -335,7 +434,6 @@ ol {
 
 .hero {
   position: relative;
-  background: var(--bg);
 }
 
 .hero-track {
@@ -465,7 +563,7 @@ ol {
 }
 
 .btn--deep:hover {
-  background: color-mix(in srgb, var(--deep-accent) 82%, var(--c-paper));
+  background: color-mix(in srgb, var(--deep-accent) 88%, var(--deep-ink));
 }
 
 .btn:active {
@@ -501,10 +599,6 @@ ol {
 }
 
 /* Work */
-
-.work {
-  background: var(--bg);
-}
 
 .work-track {
   position: relative;
@@ -1008,7 +1102,7 @@ ol {
 }
 
 .weave-option:hover span {
-  background: color-mix(in srgb, var(--c-paper) 68%, var(--c-lilac));
+  background: var(--accent-soft);
 }
 
 .loom-status {
@@ -1244,7 +1338,7 @@ ol {
 
 .work-view--panel :focus-visible,
 .about-panel :focus-visible {
-  outline-color: var(--panel-ink);
+  outline-color: var(--deep-accent);
 }
 
 .footer-row {
@@ -1431,6 +1525,7 @@ ol {
   .theme-toggle {
     order: 2;
     width: 44px;
+    min-width: 44px;
     margin-left: auto;
     padding: 0;
     justify-content: center;
@@ -1469,6 +1564,13 @@ ol {
 
   .footer-name {
     font-size: clamp(56px, 17vw, 96px);
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  html.is-textured body::before,
+  html.is-textured body::after {
+    display: none;
   }
 }
 

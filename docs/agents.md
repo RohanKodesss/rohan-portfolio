@@ -15,7 +15,7 @@
 | **Audience** | Hiring managers, technical recruiters, collaborators, and peers who scan fast and judge taste |
 | **Primary goal** | Prove competence and taste through the interface itself. The portfolio is the work sample. |
 | **Secondary goal** | Convert a 30-second scan into a résumé download, a project deep-dive, or a contact. |
-| **Anti-goal** | Do not look like an AI-generated portfolio. No purple gradients, no three equal cards, no “elevate your digital presence” copy. |
+| **Anti-goal** | Do not look like an AI-generated portfolio. No lurid colour washes, no three equal cards, no “elevate your digital presence” copy. |
 
 ---
 
@@ -53,7 +53,7 @@ The following are **banned outright** from this project. If a linter or a review
 - ❌ Decorative status dots (green “available” pulses).
 - ❌ Filler verbs: *elevate, seamless, unleash, empower, revolutionize.*
 - ❌ Fake-perfect metrics: `99.99%`, `10x`, `1000+ users` unless real and sourced.
-- ❌ AI-purple gradients, centred hero over a dark mesh, generic glassmorphism on everything.
+- ❌ Lurid colour washes, a centred hero over a dark mesh, generic glassmorphism on everything.
 - ❌ Duplicate CTAs in the same viewport.
 - ❌ A hero that does not fit the viewport or a headline longer than two lines at desktop width.
 
@@ -68,7 +68,7 @@ Before declaring any section or page “done,” verify all of the following:
 - [ ] No duplicate CTAs above the fold.
 - [ ] Copy self-audit: no filler verbs, no fake metrics, no AI-tell phrases.
 - [ ] `prefers-reduced-motion` is respected: Lenis is disabled, reveal animations become opacity-only or instant.
-- [ ] Real images or real project thumbnails. No placeholder gradients.
+- [ ] Real images or real project thumbnails. No placeholder colour washes.
 - [ ] `design.md` tokens are used via CSS custom properties, not hard-coded hex values.
 
 ---

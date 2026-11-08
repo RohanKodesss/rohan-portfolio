@@ -5,8 +5,9 @@ A single-page portfolio for a developer in India who builds AI products and smal
 The page is a flat, light "digital editorial" composition: ice-blue ground, white surfaces, burgundy
 Fraunces display type and one muted-gold accent. It is a single scroll with four main sections
 (About, Projects, Experience, Contact) plus a small interactive weave card in a field-note section.
-The work is shown as a bento grid: Inkloom as the large featured case study on the left, RepoQuest
-and Lurkr stacked on the right.
+The work is shown as a 12-column bento grid: Inkloom as the 7-column featured case study on the left,
+RepoQuest and Lurkr stacked in the remaining 5 columns. Clicking the "Rohan" wordmark opens a small
+profile card under the nav.
 
 ## Stack
 
@@ -34,7 +35,8 @@ tokens are commented in the `:root` block. `docs/design.md` records the palette,
 measurements, type system, grid and motion rules.
 
 The nav is fixed at 76px with a 12px backdrop blur. Sections use `padding: 120px 0` and
-`scroll-margin-top: 100px` so the nav never covers a heading. The container is capped at 1100px.
+`scroll-margin-top: 100px` so the nav never covers a heading. The container is capped at 1100px with
+24px gutters.
 
 ## Checks
 
@@ -50,9 +52,10 @@ CHROME_PATH="/Users/naveenkumar/Library/Caches/ms-playwright/chromium-1248/chrom
   node .agents/skills/design-taste-frontend/scripts/inspect.mjs "http://localhost:4173/"
 ```
 
-The page has been checked at 1440, 1024, 901, 860, 768 and 390 pixels, with keyboard-only navigation,
+The page has been checked at 1440, 1100, 900, 768, 767 and 390 pixels, with keyboard-only navigation,
 reduced motion, and JavaScript disabled. The mobile menu closes on Escape and on a link click, locks
 the body scroll while open, and has a solid ice-blue panel so the hero never shows through the links.
+The bento collapses to one column below 768px.
 
 ## Structure
 
@@ -64,9 +67,16 @@ src/
   styles.css       tokens, layout, components, responsive rules, reduced motion
   components/      Nav, Hero, About, Work, Experience, Loom, Contact, Footer, Icons
 public/
-  images/          live project screenshots and the Utamaro print
+  images/          live project screenshots, the Utamaro print and the profile placeholder
 docs/              design notes, critique, brief
 ```
+
+## The profile card
+
+The wordmark is a button. It toggles `#profile-card`, a white card that drops under the nav with a
+scale-and-fade transition. It closes on an outside click or Escape, and the mobile menu closes it.
+The portrait, LinkedIn and Instagram links are placeholders; swap them in `src/content.ts` and
+`public/images/` before this goes live.
 
 ## The weave card
 

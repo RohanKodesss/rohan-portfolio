@@ -15,6 +15,8 @@ export type Project = {
   repo: string;
   image: string;
   alt: string;
+  /** Small, honest build tag. Not every project gets one. */
+  tag?: string;
 };
 
 export const positioning =
@@ -44,6 +46,7 @@ export const projects: Project[] = [
     repo: "https://github.com/RohanKodesss/inkloom",
     image: "/images/inkloom.jpg",
     alt: "The Inkloom home page, headlined Logos, built the way designers build them.",
+    tag: "v2.0",
   },
   {
     id: "repoquest",
@@ -65,6 +68,7 @@ export const projects: Project[] = [
     repo: "https://github.com/RohanKodesss/Repoquest",
     image: "/images/repoquest.jpg",
     alt: "The RepoQuest start screen: a repository URL field and a Check Repo button.",
+    tag: "WIP",
   },
   {
     id: "lurkr",
@@ -86,6 +90,7 @@ export const projects: Project[] = [
     repo: "https://github.com/RohanKodesss/Lurkr",
     image: "/images/lurkr.jpg",
     alt: "The Lurkr home page: a security scanner with a target field and four live signal panels.",
+    tag: "v1.4",
   },
 ];
 
@@ -161,6 +166,15 @@ export const toolkit = [
 
 export const email = "rohan922007@gmail.com";
 export const github = "https://github.com/RohanKodesss";
+
+// TODO: these are placeholders. Swap in the real handles before this goes out.
+export const linkedin = "https://www.linkedin.com/in/rohan-kodesss/";
+export const instagram = "https://www.instagram.com/rohan.kodesss/";
+export const phone = "+919999999999";
+
+export const profileRole = "Independent developer / India";
+export const profileBio =
+  "I take fuzzy ideas to working v1s: model, interface, launch, usually alone.";
 
 export const patterns = [
   { id: "plain", label: "Plain" },

@@ -5,9 +5,9 @@ export function About() {
     <section className="section about" id="about">
       <div className="container">
         <div className="section-head" data-reveal>
-          <p className="section-label">01. // About</p>
+          <span className="mono-label">01. // ABOUT</span>
           <div className="section-head__row">
-            <h2>I take a fuzzy idea to a working v1.</h2>
+            <h2>I take a <em>fuzzy idea</em> to a working v1.</h2>
             <p className="section-intro">
               The short version: I build the model, the interface and the launch, and I ship alone.
             </p>

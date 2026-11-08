@@ -23,9 +23,9 @@ export function Contact() {
     <section className="section contact" id="contact">
       <div className="container">
         <div className="section-head" data-reveal>
-          <p className="section-label">04. // Contact</p>
+          <span className="mono-label">04. // CONTACT</span>
           <div className="section-head__row">
-            <h2>Have a fuzzy idea?</h2>
+            <h2>Have a <em>fuzzy idea</em>?</h2>
             <p className="section-intro">
               A product, a role, or a question. Tell me what you are trying to make and I will tell
               you how I would start.

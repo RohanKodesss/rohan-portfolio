@@ -6,9 +6,9 @@ export function Experience() {
     <section className="section experience" id="experience">
       <div className="container">
         <div className="section-head" data-reveal>
-          <p className="section-label">03. // Experience</p>
+          <span className="mono-label">03. // EXPERIENCE</span>
           <div className="section-head__row">
-            <h2>A short record of the work.</h2>
+            <h2>A short record of <em>the work</em>.</h2>
             <p className="section-intro">
               Not a list of job titles. A list of things that shipped, and the tools I used to get
               them out the door.

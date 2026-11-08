@@ -13,7 +13,7 @@ export function Hero() {
           </p>
 
           <h1 className="hero__title" data-reveal style={{ ["--d" as string]: "60ms" }}>
-            Rohan builds AI products and small tools.
+            Rohan builds AI products and <em>small tools</em>.
           </h1>
         </div>
 

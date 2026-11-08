@@ -3,9 +3,9 @@ import { useInView } from "../hooks";
 import { patterns, type PatternId } from "../content";
 
 const THREADS: Array<[string, string]> = [
-  ["--heading", "--accent-soft"],
-  ["--accent", "--heading"],
-  ["--body", "--accent-soft"],
+  ["--text-heading", "--accent-gold-soft"],
+  ["--accent-gold", "--text-heading"],
+  ["--text-body", "--accent-gold-soft"],
 ];
 
 const COLS = 26;
@@ -44,7 +44,7 @@ function WeaveCard({ name, pattern }: { name: string; pattern: PatternId }) {
       role="img"
       aria-label={`A woven card for ${clean}, ${label.toLowerCase()} weave, in burgundy, gold and slate.`}
     >
-      <rect width="640" height="420" fill="var(--surface)" />
+      <rect width="640" height="420" fill="var(--bg-surface)" />
       <text className="weave__name" x={X0} y={94} fontSize={size}>
         {upper}
       </text>
@@ -109,9 +109,9 @@ export function Loom() {
     <section className="section playground" id="playground">
       <div className="container">
         <div className="section-head" data-reveal>
-          <p className="section-label">Field note / Playground</p>
+          <span className="mono-label">FIELD NOTE / PLAYGROUND</span>
           <div className="section-head__row">
-            <h2>A small tool, built into this page.</h2>
+            <h2>A small tool, built <em>into this page</em>.</h2>
             <p className="section-intro">
               Type a name, pick a weave, and the threads choose their colours from the name itself.
               It is a real tool, not a mockup.

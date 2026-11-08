@@ -6,9 +6,9 @@ export function Work() {
     <section className="section projects" id="projects">
       <div className="container">
         <div className="section-head" data-reveal>
-          <p className="section-label">02. // Projects</p>
+          <span className="mono-label">02. // PROJECTS</span>
           <div className="section-head__row">
-            <h2>Three builds, live and in the open.</h2>
+            <h2>Three builds, live and <em>in the open</em>.</h2>
             <p className="section-intro">
               Every one shipped alone, from the first sketch to the deploy. The code is public.
             </p>
@@ -30,6 +30,7 @@ export function Work() {
                 rel="noreferrer"
                 aria-label={`Open ${project.name} in a new tab`}
               >
+                {project.tag && <span className="project-card__tag mono">{project.tag}</span>}
                 <img
                   src={project.image}
                   alt={project.alt}
@@ -49,7 +50,8 @@ export function Work() {
                 <h3>{project.name}</h3>
                 <p className="project-card__line">{project.line}</p>
 
-                {index === 0 ? (
+                {/* Secondary cards stay scannable; the full story lives in Experience. */}
+                {index === 0 && (
                   <dl className="project-card__case">
                     <div>
                       <dt className="mono">Problem</dt>
@@ -68,14 +70,6 @@ export function Work() {
                       <dd>{project.role}</dd>
                     </div>
                   </dl>
-                ) : (
-                  <>
-                    <p className="project-card__desc">{project.summary}</p>
-                    <p className="project-card__outcome">
-                      <span className="mono">Outcome</span>
-                      {project.outcome}
-                    </p>
-                  </>
                 )}
 
                 <p className="project-card__stack mono">

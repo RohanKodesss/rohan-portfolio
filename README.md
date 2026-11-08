@@ -2,22 +2,19 @@
 
 A single-page portfolio for a developer in India who builds AI products and small web tools.
 
-The page is a pinned poster: the name holds still while the projects pass through the frame. Each
-project is a short case study with the problem, the build, the outcome and the role, plus live and
-repository links. A GitHub star count sits between the work and the story. The weave card near the
-end is a real tool, not a mockup: type the name, choose a pattern, and the card draws itself, then
-copies a URL that reproduces it.
-
-The page has a light and a dark theme. It follows the system preference on the first visit, the nav
-toggle remembers the choice, and `?theme=light` or `?theme=dark` forces one for screenshots and
-testing. The red accent is the same family in both themes; dark uses a brightened member of it.
+The page is a flat, light "digital editorial" composition: ice-blue ground, white surfaces, burgundy
+Fraunces display type and one muted-gold accent. It is a single scroll with four main sections
+(About, Projects, Experience, Contact) plus a small interactive weave card in a field-note section.
+The work is shown as a bento grid: Inkloom as the large featured case study on the left, RepoQuest
+and Lurkr stacked on the right.
 
 ## Stack
 
 - React 19 with TypeScript
 - Vite
-- Plain CSS custom properties, native sticky positioning and IntersectionObserver
-- No Next.js, no animation library
+- Plain CSS custom properties, native smooth scroll and IntersectionObserver
+- Google Fonts: Fraunces, Inter, JetBrains Mono
+- No animation library, no UI framework, no texture, no gradient
 
 ## Run
 
@@ -30,6 +27,15 @@ npm run preview
 
 `npm run preview` serves the production build at `http://localhost:4173/`.
 
+## Design tokens
+
+`src/styles.css` is the single source of truth for colour, type, spacing, radius and motion. The
+tokens are commented in the `:root` block. `docs/design.md` records the palette, contrast
+measurements, type system, grid and motion rules.
+
+The nav is fixed at 76px with a 12px backdrop blur. Sections use `padding: 120px 0` and
+`scroll-margin-top: 100px` so the nav never covers a heading. The container is capped at 1100px.
+
 ## Checks
 
 ```bash
@@ -41,36 +47,33 @@ a Chrome or Chromium executable. On this machine:
 
 ```bash
 CHROME_PATH="/Users/naveenkumar/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
-  node .agents/skills/design-taste-frontend/scripts/inspect.mjs "http://localhost:4173/?theme=light"
+  node .agents/skills/design-taste-frontend/scripts/inspect.mjs "http://localhost:4173/"
 ```
 
-Run it again with `?theme=dark` for the night palette. Both themes pass at 1440, 768 and 390 with
-0 failures. The only remaining inspector warning is the number of type sizes, which is the deliberate
-editorial scale.
-
-Lighthouse accessibility is 100 in both themes. The page was also checked at 375px, with keyboard-only
-navigation, with reduced motion enabled, and with JavaScript disabled (the `<noscript>` fallback keeps
-a plain `mailto:` path).
-
-The written critique is in `docs/critique.md`. The recorded inspection is in `.taste-skill/` and is
-not committed.
+The page has been checked at 1440, 1024, 901, 860, 768 and 390 pixels, with keyboard-only navigation,
+reduced motion, and JavaScript disabled. The mobile menu closes on Escape and on a link click, locks
+the body scroll while open, and has a solid ice-blue panel so the hero never shows through the links.
 
 ## Structure
 
 ```
 src/
   App.tsx          page composition and reveal observer
-  content.ts       positioning line, case-study copy, links, facts, email
-  hooks.ts         scroll progress, reveal, media query, in-view mount
-  theme.ts         light and dark theme, storage, ?theme override
-  styles.css       tokens, layout, responsive rules, reduced motion
-  components/      Nav, Hero, Work, Proof, About, Loom, Contact, Footer
+  content.ts       positioning, project copy, experience, toolkit, links, email
+  hooks.ts         reveal, scroll-spy, in-view mount
+  styles.css       tokens, layout, components, responsive rules, reduced motion
+  components/      Nav, Hero, About, Work, Experience, Loom, Contact, Footer, Icons
 public/
-  fonts/           Ethnocentric subset, Instrument Sans
   images/          live project screenshots and the Utamaro print
-  media/           Jacquard loom clip and poster
-docs/              brief, palette, critique
+docs/              design notes, critique, brief
 ```
+
+## The weave card
+
+The field-note section is a real tool. Type a name, choose Plain, Twill or Basket, and the card
+redraws from the name. The name determines the thread pair. "Copy link" writes the name and weave
+into the URL so the card can be shared. The card mounts only when it approaches the viewport, behind
+a same-ratio placeholder.
 
 ## Credits
 
@@ -79,7 +82,5 @@ docs/              brief, palette, critique
   [lurkr-bsr.vercel.app](https://lurkr-bsr.vercel.app).
 - Print: Kitagawa Utamaro, *A Woman Weaving at a Hand Loom*, 1796. The Met, public domain, via
   Wikimedia Commons.
-- Video: *Métier à tisser Jacquard 01* by Bastenbas, CC BY-SA 4.0, via Wikimedia Commons.
-- Display type: Ethnocentric by Typodermic. The repository ships a subset only. Web use needs the
-  appropriate webfont license from Typodermic; the desktop EULA in `docs/` is not a web license.
-- Text type: Instrument Sans, SIL Open Font License.
+- Type: Fraunces, Inter and JetBrains Mono, all under the SIL Open Font License and served through
+  Google Fonts.

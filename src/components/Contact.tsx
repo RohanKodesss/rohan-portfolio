@@ -20,99 +20,126 @@ export function Contact() {
   }
 
   return (
-    <section className="contact" id="contact">
-      <div className="contact-inner">
-        <h2 className="sec-title" data-reveal>
-          Contact
-        </h2>
+    <section className="section contact" id="contact">
+      <div className="container">
+        <div className="section-head" data-reveal>
+          <p className="section-label">04. // Contact</p>
+          <div className="section-head__row">
+            <h2>Have a fuzzy idea?</h2>
+            <p className="section-intro">
+              A product, a role, or a question. Tell me what you are trying to make and I will tell
+              you how I would start.
+            </p>
+          </div>
+        </div>
 
-        <p className="contact-lede" data-reveal style={{ ["--d" as string]: "80ms" }}>
-          {positioningShort} If you have a fuzzy idea or a role to fill, write to me.
-        </p>
+        <div className="contact__grid">
+          <div className="contact__copy">
+            <p className="contact__lede" data-reveal>
+              {positioningShort} If you have a fuzzy idea or a role to fill, write to me.
+            </p>
 
-        <a
-          className="contact-email"
-          href={`mailto:${email}`}
-          data-reveal
-          style={{ ["--d" as string]: "140ms" }}
-        >
-          <span>
-            {user}@<wbr />
-          </span>
-          <span>{domain}</span>
-        </a>
+            <a
+              className="contact__email"
+              href={`mailto:${email}`}
+              data-reveal
+              style={{ ["--d" as string]: "80ms" }}
+            >
+              <span>
+                {user}@<wbr />
+              </span>
+              <span>{domain}</span>
+            </a>
 
-        <p className="contact-response">
-          <span className="contact-status" data-reveal style={{ ["--d" as string]: "100ms" }}>
-            <span className="status-dot" aria-hidden="true" />
-            Available for work
-          </span>
-          <span>I reply within one business day.</span>
-        </p>
+            <p
+              className="contact__status"
+              data-reveal
+              style={{ ["--d" as string]: "120ms" }}
+            >
+              <span className="status-dot" aria-hidden="true" />
+              STATUS: Available for work
+            </p>
+            <p className="contact__response">I reply within one business day.</p>
 
-        <form className="contact-form" onSubmit={onSubmit} data-reveal>
-          <div className="contact-form__row">
-            <label>
-              Your name
-              <input
-                name="name"
-                type="text"
-                autoComplete="name"
-                value={name}
-                onChange={(event) => {
-                  setName(event.target.value);
-                  setStatus("");
-                }}
-                required
-              />
-            </label>
-            <label>
-              Your email
-              <input
-                name="email"
-                type="email"
-                autoComplete="email"
-                value={replyTo}
-                onChange={(event) => {
-                  setReplyTo(event.target.value);
-                  setStatus("");
-                }}
-                required
-              />
-            </label>
+            <div className="contact__meta" data-reveal style={{ ["--d" as string]: "160ms" }}>
+              <span>India</span>
+              <a href={github} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+              <a href="https://inkloom.art" target="_blank" rel="noreferrer">
+                Inkloom
+              </a>
+              <a href="#top">Back to top</a>
+            </div>
           </div>
 
-          <label>
-            What do you have in mind?
-            <textarea
-              name="message"
-              value={message}
-              onChange={(event) => {
-                setMessage(event.target.value);
-                setStatus("");
-              }}
-              placeholder="A product idea, a role, or a question."
-              required
-            />
-          </label>
+          <form
+            className="contact-form card"
+            onSubmit={onSubmit}
+            data-reveal
+            style={{ ["--d" as string]: "100ms" }}
+          >
+            <div className="contact-form__row">
+              <div className="field">
+                <label className="mono" htmlFor="contact-name">
+                  Your name
+                </label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  value={name}
+                  onChange={(event) => {
+                    setName(event.target.value);
+                    setStatus("");
+                  }}
+                  required
+                />
+              </div>
+              <div className="field">
+                <label className="mono" htmlFor="contact-email">
+                  Your email
+                </label>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  value={replyTo}
+                  onChange={(event) => {
+                    setReplyTo(event.target.value);
+                    setStatus("");
+                  }}
+                  required
+                />
+              </div>
+            </div>
 
-          <button type="submit" className="btn btn--deep">
-            Start an email
-          </button>
-          <p className="contact-form__status" role="status">
-            {status}
-          </p>
-        </form>
+            <div className="field">
+              <label className="mono" htmlFor="contact-message">
+                What do you have in mind?
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                value={message}
+                onChange={(event) => {
+                  setMessage(event.target.value);
+                  setStatus("");
+                }}
+                placeholder="A product idea, a role, or a question."
+                required
+              />
+            </div>
 
-        <div className="contact-meta">
-          <span>India</span>
-          <a href={github} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a href="https://inkloom.art" target="_blank" rel="noreferrer">
-            Inkloom
-          </a>
-          <a href="#top">Back to top</a>
+            <button type="submit" className="btn">
+              Start an email
+            </button>
+            <p className="contact-form__status" role="status">
+              {status}
+            </p>
+          </form>
         </div>
       </div>
     </section>

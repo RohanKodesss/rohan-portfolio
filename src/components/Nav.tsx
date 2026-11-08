@@ -1,64 +1,85 @@
-import { useTheme } from "../theme";
+import { useEffect, useState } from "react";
+import { useActiveSection } from "../hooks";
 
-function MoonIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path
-        d="M20 14.4A8.2 8.2 0 0 1 9.6 4a8.2 8.2 0 1 0 10.4 10.4Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+const links = [
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
 
-function SunIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-        <circle cx="12" cy="12" r="4.2" />
-        <path d="M12 2.6v2.3M12 19.1v2.3M2.6 12h2.3M19.1 12h2.3M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6" />
-      </g>
-    </svg>
-  );
-}
+const sectionIds = [...links.map((link) => link.id), "playground"];
 
 export function Nav() {
-  const { theme, toggle } = useTheme();
-  const next = theme === "dark" ? "light" : "dark";
+  const [open, setOpen] = useState(false);
+  const active = useActiveSection(sectionIds);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 861px)").matches) setOpen(false);
+    };
+
+    document.body.classList.add("nav-open");
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      document.body.classList.remove("nav-open");
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [open]);
 
   return (
-    <header className="nav">
-      <a className="nav__mark" href="#top" aria-label="Rohan, back to top">
-        Rohan
-      </a>
-      <nav className="nav__links" aria-label="Sections">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#loom">Loom</a>
-        <a
-          className="nav__cta"
-          href="#contact"
-          aria-label="Available for work. Go to contact."
-        >
-          <span className="status-dot" aria-hidden="true" />
-          Available
+    <header className={`nav${open ? " is-open" : ""}`}>
+      <div className="container nav__inner">
+        <a className="nav__mark" href="#top" aria-label="Rohan, back to top">
+          Rohan<span>.</span>
         </a>
-      </nav>
-      <button
-        type="button"
-        className="theme-toggle"
-        onClick={toggle}
-        aria-label={`Switch to ${next} theme`}
-        title={`Switch to ${next} theme`}
-      >
-        <span className="theme-toggle__icon" aria-hidden="true">
-          {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-        </span>
-        <span className="theme-toggle__label">{next === "dark" ? "Dark" : "Light"}</span>
-      </button>
+
+        <nav className="nav__menu" id="nav-menu" aria-label="Primary">
+          {links.map((link) => (
+            <a
+              className={`nav__link${active === link.id ? " is-active" : ""}`}
+              href={`#${link.id}`}
+              key={link.id}
+              aria-current={active === link.id ? "true" : undefined}
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <span className="nav__status">
+            <span className="status-dot" aria-hidden="true" />
+            STATUS: Available for work
+          </span>
+        </nav>
+
+        <button
+          type="button"
+          className="nav__toggle"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="nav-menu"
+          onClick={() => setOpen((current) => !current)}
+        >
+          {open ? (
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" strokeWidth="1.6" />
+            </svg>
+          )}
+        </button>
+      </div>
     </header>
   );
 }

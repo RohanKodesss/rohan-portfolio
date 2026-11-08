@@ -1,5 +1,12 @@
 # AGENTS.md — Personal Portfolio
 
+> **Current brief (November 2026).** The page has been rebuilt to the "Digital Editorial" system in
+> `docs/design.md`: ice-blue ground, white surfaces, burgundy Fraunces headings, Inter body text,
+> JetBrains Mono labels, one muted-gold accent, a fixed glass nav, numbered section labels and an
+> availability dot. Where the older rules below conflict with that explicit client brief, the brief
+> and `docs/design.md` win. The em dash ban still holds. The old dark theme, paper texture and
+> pinned poster are retired.
+
 > **Read this file first. Every time.**
 > This is the contract for building a personal portfolio that reads like a designed product, not an assembled template.
 > The **Taste Skill** (`design-taste-frontend`) is installed in this project. Use it. Do not bypass it.

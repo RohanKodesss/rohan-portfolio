@@ -1,9 +1,9 @@
 import { useReveal } from "./hooks";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
-import { Work } from "./components/Work";
-import { Proof } from "./components/Proof";
 import { About } from "./components/About";
+import { Work } from "./components/Work";
+import { Experience } from "./components/Experience";
 import { Loom } from "./components/Loom";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -13,15 +13,15 @@ export default function App() {
 
   return (
     <>
-      <a className="skip" href="#work">
-        Skip to the work
+      <a className="skip" href="#projects">
+        Skip to projects
       </a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
-        <Work />
-        <Proof />
         <About />
+        <Work />
+        <Experience />
         <Loom />
         <Contact />
       </main>

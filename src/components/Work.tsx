@@ -1,121 +1,119 @@
-import { projects, github } from "../content";
-import { useMedia, useScrollProgress } from "../hooks";
+import { github, projects } from "../content";
+import { ArrowUpRight } from "./Icons";
 
 export function Work() {
-  const { ref, progress } = useScrollProgress<HTMLDivElement>();
-  const stacked = useMedia("(max-width: 900px)");
-  const reduced = useMedia("(prefers-reduced-motion: reduce)");
-  const showAll = stacked || reduced;
-  const active = Math.min(projects.length - 1, Math.floor(progress * projects.length));
-
   return (
-    <section className="work" id="work">
-      <div
-        className="work-track"
-        ref={ref}
-        style={{ height: `${projects.length * 73}svh` }}
-      >
-        <div className="work-stage">
-          <div className="work-left">
-            <div className="work-head">
-              <h2 className="sec-title" data-reveal>
-                Work
-              </h2>
-              <p className="work-intro" data-reveal style={{ ["--d" as string]: "90ms" }}>
-                Three builds, live and in the open. Every one shipped alone, from the first sketch
-                to the deploy.
-              </p>
+    <section className="section projects" id="projects">
+      <div className="container">
+        <div className="section-head" data-reveal>
+          <p className="section-label">02. // Projects</p>
+          <div className="section-head__row">
+            <h2>Three builds, live and in the open.</h2>
+            <p className="section-intro">
+              Every one shipped alone, from the first sketch to the deploy. The code is public.
+            </p>
+          </div>
+        </div>
+
+        <div className="bento">
+          {projects.map((project, index) => (
+            <article
+              className={`project-card card${index === 0 ? " project-card--featured" : ""}`}
+              key={project.id}
+              data-reveal
+              style={{ ["--d" as string]: `${index * 80}ms` }}
+            >
               <a
-                className="text-link work-more"
-                href={github}
+                className="project-card__media"
+                href={project.href}
                 target="_blank"
                 rel="noreferrer"
-                data-reveal
-                style={{ ["--d" as string]: "160ms" }}
+                aria-label={`Open ${project.name} in a new tab`}
               >
-                The rest are on GitHub
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  width={1440}
+                  height={900}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
               </a>
-            </div>
 
-            <ol className="work-index">
-              {projects.map((project, index) => (
-                <li key={project.id} className={index === active ? "is-active" : undefined}>
-                  <a href={project.href} target="_blank" rel="noreferrer">
-                    <span className="work-index__name">{project.name}</span>
-                    <span className="work-index__kind">{project.kind}</span>
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </div>
+              <div className="project-card__body">
+                <p className="project-card__meta mono">
+                  <span>{project.kind}</span>
+                  <span>{project.year}</span>
+                </p>
 
-          <div className="work-right">
-            {projects.map((project, index) => (
-              <article
-                key={project.id}
-                className={`work-view work-view--${project.tone} ${
-                  index === active ? "is-active" : ""
-                }`}
-                aria-hidden={!showAll && index !== active}
-              >
-                <header className="work-view__head">
-                  <h3 className="work-view__name">{project.name}</h3>
-                  <p className="work-view__meta">
-                    {project.kind}, {project.year}
-                  </p>
-                </header>
+                <h3>{project.name}</h3>
+                <p className="project-card__line">{project.line}</p>
 
-                <div className="work-view__body">
-                  <figure className="work-mount">
-                    <img
-                      src={project.image}
-                      alt={project.alt}
-                      width={1440}
-                      height={900}
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </figure>
-
-                  <div className="work-view__case">
-                    <p className="work-view__line">{project.line}</p>
-
-                    <dl className="case">
-                      <div>
-                        <dt>Problem</dt>
-                        <dd>{project.problem}</dd>
-                      </div>
-                      <div>
-                        <dt>What I built</dt>
-                        <dd>{project.built}</dd>
-                      </div>
-                      <div>
-                        <dt>Outcome</dt>
-                        <dd>{project.outcome}</dd>
-                      </div>
-                      <div>
-                        <dt>My role</dt>
-                        <dd>{project.role}</dd>
-                      </div>
-                    </dl>
-
-                    <p className="work-stack">
-                      <span>Stack:</span> {project.stack}
-                    </p>
-
-                    <div className="work-links">
-                      <a className="text-link" href={project.href} target="_blank" rel="noreferrer">
-                        Live: {project.linkLabel}
-                      </a>
-                      <a className="text-link" href={project.repo} target="_blank" rel="noreferrer">
-                        Repo
-                      </a>
+                {index === 0 ? (
+                  <dl className="project-card__case">
+                    <div>
+                      <dt className="mono">Problem</dt>
+                      <dd>{project.problem}</dd>
                     </div>
-                  </div>
+                    <div>
+                      <dt className="mono">What I built</dt>
+                      <dd>{project.built}</dd>
+                    </div>
+                    <div>
+                      <dt className="mono">Outcome</dt>
+                      <dd>{project.outcome}</dd>
+                    </div>
+                    <div>
+                      <dt className="mono">My role</dt>
+                      <dd>{project.role}</dd>
+                    </div>
+                  </dl>
+                ) : (
+                  <>
+                    <p className="project-card__desc">{project.summary}</p>
+                    <p className="project-card__outcome">
+                      <span className="mono">Outcome</span>
+                      {project.outcome}
+                    </p>
+                  </>
+                )}
+
+                <p className="project-card__stack mono">
+                  <span>Stack</span>
+                  {project.stack}
+                </p>
+
+                <div className="project-card__links">
+                  <a
+                    className="link-arrow"
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Live site
+                    <ArrowUpRight />
+                  </a>
+                  <a
+                    className="link-arrow"
+                    href={project.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Repository
+                    <ArrowUpRight />
+                  </a>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="projects__footer" data-reveal>
+          <p>Three public builds, each shipped solo and open to read.</p>
+          <a className="link-arrow" href={github} target="_blank" rel="noreferrer">
+            All repositories
+            <ArrowUpRight />
+          </a>
         </div>
       </div>
     </section>

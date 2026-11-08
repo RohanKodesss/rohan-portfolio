@@ -1,65 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-/** Progress through an element's scrollable height, 0 to 1. */
-export function useScrollProgress<T extends HTMLElement>() {
-  const ref = useRef<T | null>(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let listening = false;
-
-    const measure = () => {
-      frame = 0;
-      const rect = el.getBoundingClientRect();
-      const total = rect.height - window.innerHeight;
-      const next = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-      setProgress(next);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(measure);
-    };
-
-    const start = () => {
-      if (listening) return;
-      listening = true;
-      window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("resize", measure);
-    };
-    const stop = () => {
-      if (!listening) return;
-      listening = false;
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", measure);
-      if (frame) cancelAnimationFrame(frame);
-      frame = 0;
-    };
-    const sync = () => {
-      if (motion.matches) {
-        stop();
-        setProgress(0);
-      } else {
-        start();
-        measure();
-      }
-    };
-
-    sync();
-    motion.addEventListener("change", sync);
-
-    return () => {
-      stop();
-      motion.removeEventListener("change", sync);
-    };
-  }, []);
-
-  return { ref, progress };
-}
-
 /** Adds .is-in once a [data-reveal] element enters the viewport. */
 export function useReveal() {
   useEffect(() => {
@@ -87,20 +27,47 @@ export function useReveal() {
   }, []);
 }
 
-export function useMedia(query: string) {
-  const [matches, setMatches] = useState(() =>
-    typeof window === "undefined" ? false : window.matchMedia(query).matches,
-  );
+/** Tracks which section is closest to the reading line, for the nav underline. */
+export function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const mql = window.matchMedia(query);
-    const onChange = () => setMatches(mql.matches);
-    onChange();
-    mql.addEventListener("change", onChange);
-    return () => mql.removeEventListener("change", onChange);
-  }, [query]);
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((element): element is HTMLElement => Boolean(element));
 
-  return matches;
+    if (!elements.length) return;
+
+    let frame = 0;
+
+    const measure = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.35;
+      let current = "";
+
+      elements.forEach((element) => {
+        if (element.getBoundingClientRect().top <= line) current = element.id;
+      });
+
+      setActive(current);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [ids.join(",")]);
+
+  return active;
 }
 
 /** True once the element has come near the viewport. */

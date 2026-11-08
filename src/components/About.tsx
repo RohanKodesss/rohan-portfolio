@@ -1,60 +1,60 @@
-import { earlier, facts, positioning } from "../content";
+import { facts, positioning } from "../content";
 
 export function About() {
   return (
-    <section className="about" id="about">
-      <div className="about-panel">
-        <div className="about-copy">
-          <h2 className="sec-title" data-reveal>
-            About
-          </h2>
-
-          <p className="about-position" data-reveal style={{ ["--d" as string]: "80ms" }}>
-            {positioning}
-          </p>
-
-          <p className="about-statement" data-reveal style={{ ["--d" as string]: "120ms" }}>
-            I named my first product after a loom: a frame that holds the threads still while the
-            work passes through.
-          </p>
-
-          <dl className="facts" data-reveal style={{ ["--d" as string]: "140ms" }}>
-            {facts.map((fact) => (
-              <div className="fact" key={fact.label}>
-                <dt>{fact.label}</dt>
-                <dd>{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <div className="earlier" data-reveal style={{ ["--d" as string]: "200ms" }}>
-            <h3>Earlier work</h3>
-            <ul>
-              {earlier.map((item) => (
-                <li key={item.name}>
-                  <a href={item.href} target="_blank" rel="noreferrer">
-                    <span>{item.name}</span>
-                    <span>{item.detail}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+    <section className="section about" id="about">
+      <div className="container">
+        <div className="section-head" data-reveal>
+          <p className="section-label">01. // About</p>
+          <div className="section-head__row">
+            <h2>I take a fuzzy idea to a working v1.</h2>
+            <p className="section-intro">
+              The short version: I build the model, the interface and the launch, and I ship alone.
+            </p>
           </div>
         </div>
 
-        <figure className="about-print" data-reveal style={{ ["--d" as string]: "120ms" }}>
-          <img
-            src="/images/loom-print-1400.jpg"
-            alt="A woodblock print of a woman seated at a hand loom, weaving a pale cloth."
-            width={1400}
-            height={2059}
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>
-            Kitagawa Utamaro, A Woman Weaving at a Hand Loom, 1796. The Met, public domain.
-          </figcaption>
-        </figure>
+        <div className="about__grid">
+          <div className="about__copy">
+            <p className="about__position" data-reveal>
+              {positioning}
+            </p>
+
+            <blockquote className="about__quote" data-reveal style={{ ["--d" as string]: "80ms" }}>
+              I named my first product after a loom: a frame that holds the threads still while the
+              work passes through.
+            </blockquote>
+
+            <p className="about__body" data-reveal style={{ ["--d" as string]: "120ms" }}>
+              I work alone, end to end. One person can keep the model, the interface and the deploy
+              in the same head, which is usually faster than handing a fuzzy idea between three
+              people. The constraint is the point.
+            </p>
+
+            <dl className="facts" data-reveal style={{ ["--d" as string]: "160ms" }}>
+              {facts.map((fact) => (
+                <div className="fact" key={fact.label}>
+                  <dt className="mono">{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <figure className="about__print card" data-reveal style={{ ["--d" as string]: "100ms" }}>
+            <img
+              src="/images/loom-print-1400.jpg"
+              alt="A woodblock print of a woman seated at a hand loom, weaving a pale cloth."
+              width={1400}
+              height={2059}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              Kitagawa Utamaro, A Woman Weaving at a Hand Loom, 1796. The Met, public domain.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   );

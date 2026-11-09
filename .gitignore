@@ -1,5 +1,4 @@
 node_modules/
-dist/
 .DS_Store
 *.log
 
@@ -9,5 +8,5 @@ dist/
 .agents/skills/design-taste-frontend/.taste-skill/
 .obsidian/
 
-# Desktop-licensed source font: the page ships the subset in public/fonts
+# Desktop-licensed source font, not shipped with the static site
 docs/Ethnocentric (1)/

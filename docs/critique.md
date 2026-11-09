@@ -1,5 +1,9 @@
 # Critique
 
+> **Historical.** The rounds below record earlier light/dark "editorial" builds and are kept for
+> context. The current site is the dark "Modern Tech" system in `docs/design.md`: two static pages,
+> no theme toggle, no weave card, no React build.
+
 ## Round 3, hire-ready pass
 
 Run against the production build on 3 November 2026 at 1440, 768, 390 and 375, in both themes, with

@@ -1,96 +1,71 @@
 # Rohan, portfolio
 
-A single-page portfolio for a developer in India who builds AI products and small web tools.
+A two-page portfolio for a developer in India who builds AI products and small web tools.
 
-The page is a flat, light "digital editorial" composition: ice-blue ground, white surfaces, burgundy
-Fraunces display type and one muted-gold accent. It is a single scroll with four main sections
-(About, Projects, Experience, Contact) plus a small interactive weave card in a field-note section.
-The work is shown as a 12-column bento grid: Inkloom as the 7-column featured case study on the left,
-RepoQuest and Lurkr stacked in the remaining 5 columns. Clicking the "Rohan" wordmark opens a small
-profile card under the nav.
+The site is a dark "Modern Tech" composition: near-black ground, one surface step, Fraunces display
+type, Inter body text, JetBrains Mono labels, violet action and cyan detail. The home page carries the
+positioning, a short bio, two featured projects, a compact timeline and contact. The projects page is
+the full 12-column bento with three live products, earlier experiments, a toolkit card and a terminal
+that ends on an unfinished line. Clicking "Rohan" on either page opens a digital business card with a
+downloadable vCard.
 
 ## Stack
 
-- React 19 with TypeScript
-- Vite
-- Plain CSS custom properties, native smooth scroll and IntersectionObserver
-- Google Fonts: Fraunces, Inter, JetBrains Mono
-- No animation library, no UI framework, no texture, no gradient
+- Static HTML, CSS and JavaScript. No framework, no build step.
+- Google Fonts: Fraunces, Inter, JetBrains Mono.
+- IntersectionObserver for scroll reveals. Native smooth scroll.
+- One shared `styles.css` and one shared `main.js` across both pages.
 
 ## Run
 
+Any static file server works. From the repository root:
+
 ```bash
-npm install
-npm run dev
-npm run build
-npm run preview
+python3 -m http.server 4180
 ```
 
-`npm run preview` serves the production build at `http://localhost:4173/`.
+Open `http://localhost:4180/`. On Vercel, import the repository and serve the root directory with no
+build command. There is nothing to compile.
+
+## Pages
+
+```
+index.html      Home: hero, about, two featured projects, experience, contact
+projects.html   Full work: three products, experiments, toolkit, terminal
+styles.css      Tokens, layout, components, responsive rules, reduced motion
+main.js         Mobile menu, profile modal, vCard download, scroll reveals
+favicon.svg     Dark favicon
+images/         Project screenshots and the profile placeholder
+```
 
 ## Design tokens
 
-`src/styles.css` is the single source of truth for colour, type, spacing, radius and motion. The
-tokens are commented in the `:root` block. `docs/design.md` records the palette, contrast
-measurements, type system, grid and motion rules.
+`styles.css` is the single source of truth for colour, type, spacing, radius and motion. The tokens
+are commented in the `:root` block. `docs/design.md` records the palette, contrast measurements, type
+system, grid and motion rules.
 
-The nav is fixed at 76px with a 12px backdrop blur. Sections use `padding: 120px 0` and
-`scroll-margin-top: 100px` so the nav never covers a heading. The container is capped at 1100px with
-24px gutters.
+The nav is fixed at 76px with an 80% near-black glass and a 16px blur. Sections use
+`padding: 120px 0` and `scroll-margin-top: 100px` so the nav never covers a heading. The container is
+capped at 1100px with 24px gutters. The bento is one column below 768px and a 12-column grid above it.
 
 ## Checks
 
-```bash
-npm run lint
-```
+The site has been checked at 1440, 1100, 900, 768, 767, 480, 390 and 320 pixels with no horizontal
+overflow. Both pages have one H1, the nav links resolve, the mobile menu opens and closes, the profile
+card closes on an outside click or Escape, the vCard downloads as `rohan.vcf`, all reveals fire, and
+reduced motion shows the content without travel.
 
-The design-taste inspector is in `.agents/skills/design-taste-frontend/scripts/inspect.mjs`. It needs
-a Chrome or Chromium executable. On this machine:
+## Profile card
 
-```bash
-CHROME_PATH="/Users/naveenkumar/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing" \
-  node .agents/skills/design-taste-frontend/scripts/inspect.mjs "http://localhost:4173/"
-```
-
-The page has been checked at 1440, 1100, 900, 768, 767 and 390 pixels, with keyboard-only navigation,
-reduced motion, and JavaScript disabled. The mobile menu closes on Escape and on a link click, locks
-the body scroll while open, and has a solid ice-blue panel so the hero never shows through the links.
-The bento collapses to one column below 768px.
-
-## Structure
-
-```
-src/
-  App.tsx          page composition and reveal observer
-  content.ts       positioning, project copy, experience, toolkit, links, email
-  hooks.ts         reveal, scroll-spy, in-view mount
-  styles.css       tokens, layout, components, responsive rules, reduced motion
-  components/      Nav, Hero, About, Work, Experience, Loom, Contact, Footer, Icons
-public/
-  images/          live project screenshots, the Utamaro print and the profile placeholder
-docs/              design notes, critique, brief
-```
-
-## The profile card
-
-The wordmark is a button. It toggles `#profile-card`, a white card that drops under the nav with a
-scale-and-fade transition. It closes on an outside click or Escape, and the mobile menu closes it.
-The portrait, LinkedIn and Instagram links are placeholders; swap them in `src/content.ts` and
-`public/images/` before this goes live.
-
-## The weave card
-
-The field-note section is a real tool. Type a name, choose Plain, Twill or Basket, and the card
-redraws from the name. The name determines the thread pair. "Copy link" writes the name and weave
-into the URL so the card can be shared. The card mounts only when it approaches the viewport, behind
-a same-ratio placeholder.
+The wordmark is a button on both pages. It toggles `#profile-modal`, a dark card under the nav with a
+scale-and-fade transition. It closes on an outside click or Escape. "Save contact" builds a vCard
+string in `main.js`, wraps it in a Blob and downloads `rohan.vcf` with no library or backend. Swap the
+placeholder portrait in `images/` and the details in `main.js` before launch.
 
 ## Credits
 
 - Project screenshots: [inkloom.art](https://inkloom.art),
   [repoquestt.vercel.app](https://repoquestt.vercel.app),
   [lurkr-bsr.vercel.app](https://lurkr-bsr.vercel.app).
-- Print: Kitagawa Utamaro, *A Woman Weaving at a Hand Loom*, 1796. The Met, public domain, via
-  Wikimedia Commons.
 - Type: Fraunces, Inter and JetBrains Mono, all under the SIL Open Font License and served through
   Google Fonts.

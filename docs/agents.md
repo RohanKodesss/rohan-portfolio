@@ -1,16 +1,18 @@
 # AGENTS.md — Personal Portfolio
 
-> **Current brief (November 2026).** The page has been rebuilt to the "Digital Editorial" system in
-> `docs/design.md`: ice-blue ground, white surfaces, burgundy Fraunces headings, Inter body text,
-> JetBrains Mono labels, one muted-gold accent, a fixed glass nav, numbered section labels and an
-> availability dot. Where the older rules below conflict with that explicit client brief, the brief
-> and `docs/design.md` win. The em dash ban still holds. The old dark theme, paper texture and
-> pinned poster are retired.
+> **Current brief (November 2026).** The site has been rebuilt to the dark "Modern Tech" system in
+> `docs/design.md`: near-black ground, one surface step, Fraunces headings, Inter body text, JetBrains
+> Mono labels, one violet action colour, one cyan detail colour, a fixed glass nav, a pulsing cyan
+> availability dot and a two-page structure (`index.html` and `projects.html`). It is now plain HTML,
+> CSS and JavaScript with no React, Vite or build step. Where the older rules below conflict with that
+> explicit client brief, the brief and `docs/design.md` win. That includes the monospace labels, the
+> glass nav, the violet accent and the status dot, which the brief explicitly requires. The em dash
+> ban still holds. The old light "Digital Editorial" theme and the React source are retired.
 
 > **Read this file first. Every time.**
 > This is the contract for building a personal portfolio that reads like a designed product, not an assembled template.
 > The **Taste Skill** (`design-taste-frontend`) is installed in this project. Use it. Do not bypass it.
-> The `design.md` file in the repository root is the single source of truth for colour, type, and radius tokens. Read it before writing any styles.
+> The `docs/design.md` file is the single source of truth for colour, type, and radius tokens. Read it before writing any styles.
 
 ---
 
@@ -80,9 +82,9 @@ Before declaring any section or page “done,” verify all of the following:
 
 ---
 
-## 2. Design Token Source: `design.md`
+## 2. Design Token Source: `docs/design.md`
 
-**`design.md` in the repository root is law.** Do not invent colours, type scales, or radii. Read the file, extract the values, and map them to CSS custom properties in a single `:root` block (or the framework’s token layer).
+**`docs/design.md` is law.** Do not invent colours, type scales, or radii. Read the file, extract the values, and map them to CSS custom properties in a single `:root` block (or the framework’s token layer).
 
 The agent must:
 

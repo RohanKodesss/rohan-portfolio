@@ -16,7 +16,7 @@
   --text-body: #a3a3a3;
   --accent-primary: #8b5cf6;
   --accent-secondary: #22d3ee;
-  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.08);
 
   /* The button fill is a shade darker than the token so 12px white text
      clears 4.5:1. The violet token still owns borders, dots and focus rings. */
@@ -24,7 +24,7 @@
   --accent-primary-darker: #6d28d9;
 
   /* The nav is the only glass surface. Everything else stays flat. */
-  --nav-glass: rgba(10, 10, 10, 0.8);
+  --nav-glass: rgba(10, 10, 10, 0.7);
   --nav-height: 76px;
 
   /* Type. Fraunces for display, Inter for reading, JetBrains Mono for labels. */
@@ -58,7 +58,7 @@
   /* Frame. */
   --container: 1100px;
   --gutter: 24px;
-  --section-pad: 120px;
+  --section-pad: 140px;
 
   /* Shape and motion. */
   --radius: 12px;
@@ -832,6 +832,9 @@ p {
 
 .hero__copy .status {
   margin-top: var(--space-6);
+  /* Deliberate tilt. A perfect horizontal badge reads like a template. */
+  rotate: -1deg;
+  transform-origin: left center;
 }
 
 /* A real status panel, not a fake dashboard. It carries the current build. */
@@ -957,6 +960,10 @@ p {
   gap: var(--space-8);
 }
 
+.about__copy {
+  max-width: 700px;
+}
+
 .about__copy p + p {
   margin-top: var(--space-5);
 }
@@ -1031,6 +1038,7 @@ p {
   padding: 6px 9px;
   border: 1px solid var(--border-color);
   border-radius: 4px;
+  background: rgba(34, 211, 238, 0.06);
   color: var(--accent-secondary);
   font-family: var(--font-mono);
   font-size: 0.625rem;
@@ -1054,7 +1062,7 @@ p {
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: var(--space-5);
+  padding: var(--space-6);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   background: var(--bg-surface);

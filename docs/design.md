@@ -22,13 +22,13 @@ All values live as CSS custom properties in `styles.css`.
 | `--text-body` | `#A3A3A3` | running paragraphs, captions, metadata |
 | `--accent-primary` | `#8B5CF6` | the violet accent: borders, dots, focus rings, hover |
 | `--accent-secondary` | `#22D3EE` | cyan detail: labels, tech tags, terminal prompt, status dot |
-| `--border-color` | `rgba(255,255,255,0.1)` | the standard 1px card and section border |
+| `--border-color` | `rgba(255,255,255,0.08)` | the standard 1px card and section border |
 | `--accent-primary-deep` | `#7C3AED` | primary button fill, a shade darker for text contrast |
 | `--accent-primary-darker` | `#6D28D9` | primary button hover |
-| `--nav-glass` | `rgba(10,10,10,0.8)` | the one glass surface, the fixed nav |
+| `--nav-glass` | `rgba(10,10,10,0.7)` | the one glass surface, the fixed nav |
 
 Violet is the action colour. Cyan is the detail colour. They do not trade roles. Running text stays
-in `--text-body`; headings stay in `--text-heading`.
+in `--text-body`; headings stay in `--text-heading`. Tech tags use cyan text on a 6% cyan wash.
 
 ## Contrast
 
@@ -54,8 +54,9 @@ surface, where it lands at 4.2:1.
 ## Space and frame
 
 - One container: `min(100% - 48px, 1100px)`, centred, 24px gutters.
-- Sections: `padding: 120px 0`. `scroll-margin-top: 100px`. Smooth scrolling on `html`.
-- One spacing scale from 4px to 120px. Cards use the same 12px radius; controls use 8px.
+- Sections: `padding: 140px 0`. `scroll-margin-top: 100px`. Smooth scrolling on `html`.
+- One spacing scale from 4px to 120px. Cards use 32px padding and the same 12px radius;
+  controls use 8px. The about copy is capped at 700px for reading comfort.
 - The bento is a 12-column grid at 768px and wider. It becomes one column below 768px.
 - Home bento: Inkloom spans 7 columns, RepoQuest spans 5. Both cards share a row height so the
   shorter card does not leave a void.
@@ -72,7 +73,7 @@ surface, where it lands at 4.2:1.
 
 ## Nav and mobile
 
-The nav is fixed, 76px tall, near-black at 80% with a 16px backdrop blur. At 767px the links collapse
+The nav is fixed, 76px tall, near-black at 70% with a 16px backdrop blur. At 767px the links collapse
 into a hamburger panel with a solid near-black ground, Escape to close, body scroll lock, and a link
 click that closes the panel before navigation.
 

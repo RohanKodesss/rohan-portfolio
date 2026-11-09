@@ -44,8 +44,8 @@ images/         Project screenshots and the profile placeholder
 are commented in the `:root` block. `docs/design.md` records the palette, contrast measurements, type
 system, grid and motion rules.
 
-The nav is fixed at 76px with an 80% near-black glass and a 16px blur. Sections use
-`padding: 120px 0` and `scroll-margin-top: 100px` so the nav never covers a heading. The container is
+The nav is fixed at 76px with a 70% near-black glass and a 16px blur. Sections use
+`padding: 140px 0` and `scroll-margin-top: 100px` so the nav never covers a heading. The container is
 capped at 1100px with 24px gutters. The bento is one column below 768px and a 12-column grid above it.
 
 ## Checks

@@ -2,5 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "buildCommand": "echo \"Static site: no build step required\"",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/zine.html"
+    }
+  ]
 }

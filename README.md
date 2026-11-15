@@ -2,19 +2,24 @@
 
 A two-page portfolio for a developer in India who builds AI products and small web tools.
 
-The site is a dark "Modern Tech" composition: near-black ground, one surface step, Fraunces display
-type, Inter body text, JetBrains Mono labels, violet action and cyan detail. The home page carries the
-positioning, a short bio, two featured projects, a compact timeline and contact. The projects page is
-the full 12-column bento with three live products, earlier experiments, a toolkit card and a terminal
-that ends on an unfinished line. Clicking "Rohan" on either page opens a digital business card with a
+The site is a black-and-white "Engineering Workstation" composition: near-black ground, white ink,
+three greys, Space Grotesk display type, Inter body text and IBM Plex Mono labels. Sections are
+separated by thin rules, project screenshots are monochrome, and the layout reads like a clean
+control panel rather than a retro costume. A barely visible grain and scanline layer sits above the
+page without blocking clicks.
+
+The home page carries the positioning, two featured projects, a short bio, a compact timeline and
+contact. The projects page is the full record: three live products, earlier experiments, a toolkit
+panel and a build log. Clicking "Rohan" on either page opens a digital business card with a
 downloadable vCard.
 
 ## Stack
 
 - Static HTML, CSS and JavaScript. No framework, no build step.
-- Google Fonts: Fraunces, Inter, JetBrains Mono.
-- IntersectionObserver for scroll reveals. Native smooth scroll.
+- Google Fonts: Space Grotesk, Inter, IBM Plex Mono.
 - One shared `styles.css` and one shared `main.js` across both pages.
+- IntersectionObserver is not used. Content is visible immediately; only hover, focus and dialog
+  transitions remain.
 
 ## Run
 
@@ -30,42 +35,50 @@ build command. There is nothing to compile.
 ## Pages
 
 ```
-index.html      Home: hero, about, two featured projects, experience, contact
-projects.html   Full work: three products, experiments, toolkit, terminal
-styles.css      Tokens, layout, components, responsive rules, reduced motion
-main.js         Mobile menu, profile modal, vCard download, scroll reveals
+index.html      Home: hero, selected work, about, experience, contact
+projects.html   Full work: three products, experiments, toolkit, build log
+styles.css      Tokens, layout, components, responsive rules, accessibility preferences
+main.js         Mobile menu, profile modal, vCard download
 favicon.svg     Dark favicon
 images/         Project screenshots and the profile placeholder
 ```
 
 ## Design tokens
 
-`styles.css` is the single source of truth for colour, type, spacing, radius and motion. The tokens
-are commented in the `:root` block. `docs/design.md` records the palette, contrast measurements, type
+`styles.css` is the single source of truth for colour, type, spacing and motion. The tokens are
+commented in the `:root` block. `docs/design.md` records the palette, contrast measurements, type
 system, grid and motion rules.
 
-The nav is fixed at 76px with a 70% near-black glass and a 16px blur. Sections use
-`padding: 140px 0` and `scroll-margin-top: 100px` so the nav never covers a heading. The container is
-capped at 1100px with 24px gutters. The bento is one column below 768px and a 12-column grid above it.
+- Ground `#0a0a0a`, raised surface `#101010`, inset surface `#141414`.
+- Ink `#f5f5f5`, body `#cfcfcf`, muted `#b0b0b0`, dim `#8a8a8a`.
+- Rules `#2c2c2c`, strong rules `#4a4a4a`.
+- Display: Space Grotesk 700, tight tracking, 0.98 leading.
+- Body: Inter 400, 16px, 1.6 leading.
+- Labels: IBM Plex Mono 400/500, uppercase, 0.06em tracking, 13px.
+- Square corners everywhere. No shadows except the floating business card.
+
+The nav is sticky at 64px. Sections use a fluid 56 to 92px vertical rhythm and sit on full-width
+rules. The container is capped at 1240px with fluid gutters. The work grid is one column below
+1024px and a 7/5 asymmetric grid above it.
 
 ## Checks
 
-The site has been checked at 1440, 1100, 900, 768, 767, 480, 390 and 320 pixels with no horizontal
-overflow. Both pages have one H1, the nav links resolve, the mobile menu opens and closes, the profile
-card closes on an outside click or Escape, the vCard downloads as `rohan.vcf`, all reveals fire, and
-reduced motion shows the content without travel.
+Checked at 1440, 1280, 1024, 768, 390 and 375 pixels with no horizontal overflow. Both pages have
+one H1, the nav links resolve, the mobile menu opens and closes, the profile card closes on an
+outside click or Escape, the vCard downloads as `rohan.vcf`, and reduced motion removes the
+remaining transitions. Body text is 16px and every text colour clears 4.5:1 against its surface.
 
 ## Profile card
 
-The wordmark is a button on both pages. It toggles `#profile-modal`, a dark card under the nav with a
-scale-and-fade transition. It closes on an outside click or Escape. "Save contact" builds a vCard
-string in `main.js`, wraps it in a Blob and downloads `rohan.vcf` with no library or backend. Swap the
-placeholder portrait in `images/` and the details in `main.js` before launch.
+The wordmark is a button on both pages. It toggles `#profile-modal`, a dark card under the nav with
+a short fade and a small rise. It closes on an outside click or Escape. "Save contact" builds a
+vCard string in `main.js`, wraps it in a Blob and downloads `rohan.vcf` with no library or backend.
+Swap the placeholder portrait in `images/` and the details in `main.js` before launch.
 
 ## Credits
 
 - Project screenshots: [inkloom.art](https://inkloom.art),
   [repoquestt.vercel.app](https://repoquestt.vercel.app),
   [lurkr-bsr.vercel.app](https://lurkr-bsr.vercel.app).
-- Type: Fraunces, Inter and JetBrains Mono, all under the SIL Open Font License and served through
-  Google Fonts.
+- Type: Space Grotesk, Inter and IBM Plex Mono, all under the SIL Open Font License and served
+  through Google Fonts.

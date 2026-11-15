@@ -34,15 +34,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- The reveal styles only apply when JS is on. If main.js fails, content stays visible. -->
-    <script>
-      document.documentElement.classList.add("js");
-    </script>
   </head>
 
   <body>
@@ -94,8 +90,8 @@
         </button>
 
         <nav class="site-nav__menu" id="site-menu" aria-label="Primary">
-          <a class="nav-link" href="index.html#about" aria-current="page">About</a>
-          <a class="nav-link" href="projects.html">Projects</a>
+          <a class="nav-link" href="projects.html">Work</a>
+          <a class="nav-link" href="index.html#about">About</a>
           <a class="nav-link" href="index.html#contact">Contact</a>
 
           <div class="nav__mobile-meta">
@@ -196,19 +192,19 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="container">
           <div class="hero__head">
-            <p class="label" data-reveal>Independent developer / India</p>
-            <h1 id="hero-title" data-reveal style="--d: 60ms">
+            <p class="label" data-num="00">Independent developer / India</p>
+            <h1 id="hero-title">
               I build web apps that <em>ship</em>.
             </h1>
           </div>
 
           <div class="hero__grid">
             <div class="hero__copy">
-              <p class="hero__lede" data-reveal style="--d: 120ms">
+              <p class="hero__lede">
                 I take fuzzy ideas to working v1s: model, interface, launch. Solo, end to end.
               </p>
 
-              <div class="hero__actions" data-reveal style="--d: 180ms">
+              <div class="hero__actions">
                 <a class="btn" href="projects.html">
                   View projects
                   <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg>
@@ -216,13 +212,13 @@
                 <a class="btn btn--ghost" href="mailto:rohan922007@gmail.com">Email me</a>
               </div>
 
-              <p class="status" data-reveal style="--d: 240ms">
+              <p class="status">
                 <span class="status-dot" aria-hidden="true"></span>
                 STATUS: Available for work
               </p>
             </div>
 
-            <aside class="hero__panel" data-reveal style="--d: 160ms" aria-label="Current build">
+            <aside class="hero__panel" aria-label="Current build">
             <div class="hero__panel-bar">
               <span class="mono">Current build</span>
               <span class="hero__panel-live mono">
@@ -264,77 +260,18 @@
         </div>
       </section>
 
-      <section class="section" id="about" aria-labelledby="about-title">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <p class="label">About</p>
-            <h2 id="about-title">One person, <em>end to end</em>.</h2>
-          </div>
-
-          <div class="about__grid">
-            <div class="about__copy">
-              <p class="lead" data-reveal>
-                I build the model, the interface and the launch. No handoffs.
-              </p>
-              <p data-reveal style="--d: 60ms">
-                Most of my work starts as a fuzzy idea and ends as a live URL. I care about the
-                parts users feel: speed, clarity, and the first five seconds.
-              </p>
-              <blockquote class="note" data-reveal style="--d: 120ms">
-                The constraint is the point.
-              </blockquote>
-            </div>
-
-            <aside class="about__aside">
-              <div class="facts" data-reveal style="--d: 80ms">
-                <div class="fact">
-                  <span class="mono">Based</span>
-                  <span>India</span>
-                </div>
-                <div class="fact">
-                  <span class="mono">Mode</span>
-                  <span>Solo, end to end</span>
-                </div>
-                <div class="fact">
-                  <span class="mono">Focus</span>
-                  <span>AI products, small tools</span>
-                </div>
-                <div class="fact">
-                  <span class="mono">Now</span>
-                  <span>Inkloom, early access</span>
-                </div>
-              </div>
-
-              <div class="toolkit" data-reveal style="--d: 140ms">
-                <p class="toolkit__title mono">Toolkit</p>
-                <ul class="tags">
-                  <li>TypeScript</li>
-                  <li>Python</li>
-                  <li>JavaScript</li>
-                  <li>React</li>
-                  <li>Flask</li>
-                  <li>Postgres</li>
-                  <li>Cloudflare</li>
-                  <li>Vercel</li>
-                </ul>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="work" aria-labelledby="work-title">
         <div class="container">
-          <div class="section-head section-head--row" data-reveal>
+          <div class="section-head section-head--row">
             <div>
-              <p class="label">Selected work</p>
+              <p class="label" data-num="01">Selected work</p>
               <h2 id="work-title">Two builds, <em>live</em>.</h2>
             </div>
             <p class="section-head__intro">Shipped solo. Code public. Still running.</p>
           </div>
 
           <div class="bento bento--home">
-            <article class="project-card project-card--feature" data-reveal>
+            <article class="project-card project-card--feature">
               <a
                 class="project-card__media"
                 href="https://inkloom.art"
@@ -385,7 +322,7 @@
               </div>
             </article>
 
-            <article class="project-card project-card--compact" data-reveal style="--d: 80ms">
+            <article class="project-card project-card--compact">
               <a
                 class="project-card__media"
                 href="https://repoquestt.vercel.app"
@@ -443,7 +380,7 @@
             </article>
           </div>
 
-          <div class="section-foot" data-reveal>
+          <div class="section-foot">
             <a class="text-link" href="projects.html">
               View all projects
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg>
@@ -452,18 +389,77 @@
         </div>
       </section>
 
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-head">
+            <p class="label" data-num="02">About</p>
+            <h2 id="about-title">One person, <em>end to end</em>.</h2>
+          </div>
+
+          <div class="about__grid">
+            <div class="about__copy">
+              <p class="lead">
+                I build the model, the interface and the launch. No handoffs.
+              </p>
+              <p>
+                Most of my work starts as a fuzzy idea and ends as a live URL. I care about the
+                parts users feel: speed, clarity, and the first five seconds.
+              </p>
+              <blockquote class="note">
+                The constraint is the point.
+              </blockquote>
+            </div>
+
+            <aside class="about__aside">
+              <div class="facts">
+                <div class="fact">
+                  <span class="mono">Based</span>
+                  <span>India</span>
+                </div>
+                <div class="fact">
+                  <span class="mono">Mode</span>
+                  <span>Solo, end to end</span>
+                </div>
+                <div class="fact">
+                  <span class="mono">Focus</span>
+                  <span>AI products, small tools</span>
+                </div>
+                <div class="fact">
+                  <span class="mono">Now</span>
+                  <span>Inkloom, early access</span>
+                </div>
+              </div>
+
+              <div class="toolkit">
+                <p class="toolkit__title mono">Toolkit</p>
+                <ul class="tags">
+                  <li>TypeScript</li>
+                  <li>Python</li>
+                  <li>JavaScript</li>
+                  <li>React</li>
+                  <li>Flask</li>
+                  <li>Postgres</li>
+                  <li>Cloudflare</li>
+                  <li>Vercel</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="experience" aria-labelledby="experience-title">
         <div class="container">
-          <div class="section-head section-head--row" data-reveal>
+          <div class="section-head section-head--row">
             <div>
-              <p class="label">Experience</p>
+              <p class="label" data-num="03">Experience</p>
               <h2 id="experience-title">A short <em>record</em>.</h2>
             </div>
             <p class="section-head__intro">Not job titles. Things that shipped.</p>
           </div>
 
           <ol class="timeline">
-            <li class="timeline__item" data-reveal>
+            <li class="timeline__item">
               <p class="timeline__year mono">2026</p>
               <div class="timeline__body">
                 <h3>Inkloom</h3>
@@ -479,7 +475,7 @@
               </div>
             </li>
 
-            <li class="timeline__item" data-reveal style="--d: 60ms">
+            <li class="timeline__item">
               <p class="timeline__year mono">2025</p>
               <div class="timeline__body">
                 <h3>RepoQuest</h3>
@@ -500,7 +496,7 @@
               </div>
             </li>
 
-            <li class="timeline__item" data-reveal style="--d: 120ms">
+            <li class="timeline__item">
               <p class="timeline__year mono">2025</p>
               <div class="timeline__body">
                 <h3>Lurkr</h3>
@@ -521,7 +517,7 @@
               </div>
             </li>
 
-            <li class="timeline__item" data-reveal style="--d: 180ms">
+            <li class="timeline__item">
               <p class="timeline__year mono">Earlier</p>
               <div class="timeline__body">
                 <h3>Small experiments</h3>
@@ -545,32 +541,30 @@
         </div>
       </section>
 
-      <section class="section" id="contact" aria-labelledby="contact-title">
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
         <div class="container">
           <div class="contact__grid">
             <div class="contact__copy">
-              <p class="label" data-reveal>Contact</p>
-              <h2 id="contact-title" data-reveal style="--d: 60ms">
+              <p class="label" data-num="04">Contact</p>
+              <h2 id="contact-title">
                 Have a <em>fuzzy idea</em>?
               </h2>
-              <p class="lead" data-reveal style="--d: 120ms">
+              <p class="lead">
                 Tell me what you are trying to make. I will tell you how I would start.
               </p>
               <a
                 class="contact__email"
                 href="mailto:rohan922007@gmail.com"
-                data-reveal
-                style="--d: 180ms"
               >
                 rohan922007@gmail.com
               </a>
-              <p class="status" data-reveal style="--d: 240ms">
+              <p class="status">
                 <span class="status-dot" aria-hidden="true"></span>
                 STATUS: Available for work
               </p>
             </div>
 
-            <aside class="contact__aside" data-reveal style="--d: 100ms">
+            <aside class="contact__aside">
               <a class="btn" href="mailto:rohan922007@gmail.com?subject=Project%20idea">
                 Start an email
                 <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg>
@@ -608,7 +602,7 @@
           <p class="footer__word">Rohan<span>.</span></p>
           <nav class="footer__nav" aria-label="Footer">
             <a href="index.html#about">About</a>
-            <a href="projects.html">Projects</a>
+            <a href="projects.html">Work</a>
             <a href="index.html#experience">Experience</a>
             <a href="index.html#contact">Contact</a>
             <a href="https://github.com/RohanKodesss" target="_blank" rel="noreferrer">GitHub</a>

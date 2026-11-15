@@ -1,13 +1,15 @@
 # AGENTS.md — Personal Portfolio
 
-> **Current brief (November 2026).** The site has been rebuilt to the dark "Modern Tech" system in
-> `docs/design.md`: near-black ground, one surface step, Fraunces headings, Inter body text, JetBrains
-> Mono labels, one violet action colour, one cyan detail colour, a fixed glass nav, a pulsing cyan
-> availability dot and a two-page structure (`index.html` and `projects.html`). It is now plain HTML,
-> CSS and JavaScript with no React, Vite or build step. Where the older rules below conflict with that
-> explicit client brief, the brief and `docs/design.md` win. That includes the monospace labels, the
-> glass nav, the violet accent and the status dot, which the brief explicitly requires. The em dash
-> ban still holds. The old light "Digital Editorial" theme and the React source are retired.
+> **Current brief (November 2026).** The site has been rebuilt to the black-and-white "Engineering
+> Workstation" system in `docs/design.md`: near-black ground, white ink, three greys, Space Grotesk
+> display type, Inter body text, IBM Plex Mono labels, square corners, visible 1px rules, numbered
+> module labels, monochrome screenshots, a sticky solid nav and a two-page structure (`index.html`
+> and `projects.html`). It is plain HTML, CSS and JavaScript with no React, Vite or build step. Where
+> the older rules below conflict with that explicit client brief, the brief and `docs/design.md`
+> win. That includes the monospace labels, the visible rules, the section labels and the
+> three-family stack, which the brief explicitly requires. The em dash ban still holds. The old
+> violet/cyan "Modern Tech" theme, the Fraunces/JetBrains stack, the glass nav and the React source
+> are retired.
 
 > **Read this file first. Every time.**
 > This is the contract for building a personal portfolio that reads like a designed product, not an assembled template.
@@ -46,9 +48,9 @@ Set and record these dials in every build session. Baseline is **8 / 6 / 4**; ad
 
 | Dial | Value for this project | Rationale |
 |---|---|---|
-| **`DESIGN_VARIANCE`** | **7** | Asymmetric layouts, offset grids, and broken alignment read as intentional. Full symmetry (1) is a template tell; 10 is chaos without hierarchy. |
-| **`MOTION_INTENSITY`** | **7** | Lenis smooth scroll + GSAP ScrollTrigger reveals. Motion is choreographed, not decorative. Never infinite-loop micro-animations. |
-| **`VISUAL_DENSITY`** | **3** | Gallery-like. Generous whitespace. One idea per viewport. The recruiter must breathe. |
+| **`DESIGN_VARIANCE`** | **7** | An asymmetric hero, a 7/5 work grid and a table-like experience record. Full symmetry (1) is a template tell; 10 is chaos without hierarchy. |
+| **`MOTION_INTENSITY`** | **2** | Motion is feedback only: 170ms hover and focus transitions, a 180ms dialog. No scroll reveals, no loops, no easing showpieces. |
+| **`VISUAL_DENSITY`** | **6** | Control-panel density. Structured whitespace between modules, full data rows inside them. The recruiter must scan, not hunt. |
 
 ### 1.3 Anti-Slop Rules (Absolute Bans)
 
@@ -56,8 +58,8 @@ The following are **banned outright** from this project. If a linter or a review
 
 - ❌ **Em dashes (—)** anywhere: copy, comments, UI. Use a colon, comma, or period.
 - ❌ Three identical feature/project cards in a row.
-- ❌ **Inter** as the default body face. Use the type system defined in `design.md`.
-- ❌ Section-number eyebrows like `01 · about` or `02 · work`.
+- ❌ A fourth typeface or a pixel body face. Use exactly the three families in `design.md`.
+- ❌ Decorative section numbers that do not map to real sections. The module indices in `design.md` are structural.
 - ❌ “BETA” labels in the hero.
 - ❌ Decorative status dots (green “available” pulses).
 - ❌ Filler verbs: *elevate, seamless, unleash, empower, revolutionize.*

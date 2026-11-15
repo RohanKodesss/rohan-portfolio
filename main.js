@@ -162,27 +162,4 @@
     }
   });
 
-  /* ------------------------------------------------------------------------
-     Scroll reveal
-     One observer, one class. Items unobserve after they appear.
-     ------------------------------------------------------------------------ */
-
-  const revealNodes = Array.from(document.querySelectorAll("[data-reveal]"));
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries, instance) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          instance.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
-    );
-
-    revealNodes.forEach((node) => observer.observe(node));
-  } else {
-    revealNodes.forEach((node) => node.classList.add("is-in"));
-  }
 })();

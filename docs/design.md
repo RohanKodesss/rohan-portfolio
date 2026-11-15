@@ -2,13 +2,14 @@
 
 ## Direction
 
-A dark "Modern Tech" page: near-black ground, one surface step, a violet action colour and a cyan
-detail colour. Flat surfaces, 1px borders, no gradients, no texture and no illustration. Depth comes
-from the tone step and the border. The fixed nav is the only glass surface. The profile card is the
-only surface with a shadow, because it should feel dropped onto the page.
+A black-and-white "Engineering Workstation" page. Hard rules, square corners, three working
+typefaces and one inverted moment per screen. The structure comes from a technical dossier or a
+control panel: numbered modules, labelled data rows, monochrome screenshots and a single white
+action per screen. The grain and scanline layers are texture, not a theme. They stay subtle enough
+that body text remains the loudest thing on the page.
 
-The site is two static pages. `index.html` carries the positioning and the short story;
-`projects.html` carries the full bento. They share one stylesheet and one script.
+The site is two static pages. `index.html` carries the positioning, selected work and short story;
+`projects.html` carries the full record. They share one stylesheet and one script.
 
 ## Palette
 
@@ -16,72 +17,93 @@ All values live as CSS custom properties in `styles.css`.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--bg-canvas` | `#0A0A0A` | page ground |
-| `--bg-surface` | `#171717` | cards, panel, toolkit, profile card |
-| `--text-heading` | `#EDEDED` | every h1, h2 and h3, plus primary links |
-| `--text-body` | `#A3A3A3` | running paragraphs, captions, metadata |
-| `--accent-primary` | `#8B5CF6` | the violet accent: borders, dots, focus rings, hover |
-| `--accent-secondary` | `#22D3EE` | cyan detail: labels, tech tags, terminal prompt, status dot |
-| `--border-color` | `rgba(255,255,255,0.08)` | the standard 1px card and section border |
-| `--accent-primary-deep` | `#7C3AED` | primary button fill, a shade darker for text contrast |
-| `--accent-primary-darker` | `#6D28D9` | primary button hover |
-| `--nav-glass` | `rgba(10,10,10,0.7)` | the one glass surface, the fixed nav |
+| `--bg` | `#0a0a0a` | page ground |
+| `--bg-raise` | `#101010` | cards, panels, toolkit |
+| `--bg-inset` | `#141414` | panel bars, hover surfaces |
+| `--fg` | `#f5f5f5` | headings, primary links, rules of emphasis |
+| `--fg-body` | `#cfcfcf` | running paragraphs |
+| `--fg-muted` | `#b0b0b0` | secondary paragraphs, nav |
+| `--fg-dim` | `#8a8a8a` | labels, timestamps, fine print |
+| `--rule` | `#2c2c2c` | standard 1px borders and dividers |
+| `--rule-strong` | `#4a4a4a` | hover borders, outlined controls |
 
-Violet is the action colour. Cyan is the detail colour. They do not trade roles. Running text stays
-in `--text-body`; headings stay in `--text-heading`. Tech tags use cyan text on a 6% cyan wash.
+There is no accent colour. Emphasis comes from scale, weight, an inverted word and a heavier rule.
 
 ## Contrast
 
 Measured on the real tokens:
 
-- Heading on canvas: 16.9:1. Body on canvas: 7.9:1.
-- Heading on surface: 15.3:1. Body on surface: 7.1:1.
-- White on `--accent-primary-deep`: 5.7:1. White on `--accent-primary`: 4.2:1.
-- Cyan on surface: 9.9:1. Violet on surface: 4.2:1.
+- Heading on ground: 18.2:1. Body on ground: 12.7:1. Muted on ground: 9.1:1.
+- Dim on ground: 5.7:1. Dim on inset surface: 5.3:1.
+- Heading on raised surface: 17.5:1. Body on raised surface: 12.2:1.
 
-The button fill is `--accent-primary-deep`, not `--accent-primary`, so 12px white text clears 4.5:1.
-The violet token still owns borders, dots and focus rings. It is not used for small text on a
-surface, where it lands at 4.2:1.
+Every text role clears WCAG AA at its size. The grain overlay is capped at 0.15 and drops to 0.08
+below 640px, so it does not erode contrast on a phone.
 
 ## Type
 
-- Display: Fraunces, weights 700 / 900, optical sizing on, tracking -0.02em, 0.98 leading. One word
-  per heading may be italic for emphasis.
-- Text: Inter 400, 16px base, 1.7 line height. Paragraphs use `--text-body`, not white.
-- Labels, nav and buttons: JetBrains Mono 500, uppercase, 0.05em tracking.
-- One fluid scale in `:root`; section headings use `--text-h2`, the hero `--text-h1`.
+- Display: Space Grotesk 700, tracking -0.035em to -0.045em, 0.98 leading. The hero uses the same
+  face at up to 7rem and one inverted word.
+- Body: Inter 400, 16px, 1.6 leading. Running copy is 16px, not 14px.
+- Labels, navigation, buttons, metadata and code: IBM Plex Mono 400/500, uppercase, 0.06em to
+  0.08em tracking, 13px.
+- Three families only. Each has one job. The stack is declared in `:root`.
+- Emphasis in headings is a 3px underline. The hero word `ship` is the only inverted moment.
 
 ## Space and frame
 
-- One container: `min(100% - 48px, 1100px)`, centred, 24px gutters.
-- Sections: `padding: 140px 0`. `scroll-margin-top: 100px`. Smooth scrolling on `html`.
-- One spacing scale from 4px to 120px. Cards use 32px padding and the same 12px radius;
-  controls use 8px. The about copy is capped at 700px for reading comfort.
-- The bento is a 12-column grid at 768px and wider. It becomes one column below 768px.
-- Home bento: Inkloom spans 7 columns, RepoQuest spans 5. Both cards share a row height so the
-  shorter card does not leave a void.
-- Projects bento: Inkloom spans 7 columns and 2 rows. RepoQuest and Lurkr stack in the right 5
-  columns. Experiments span 7, Toolkit spans 5, and the terminal spans the full width.
+- One container: `min(100% - 2 * gutter, 1240px)`, with fluid 20 to 48px gutters.
+- Sections: fluid 56 to 92px padding, one full-width rule between each, and `scroll-margin-top` so
+  anchors clear the sticky nav.
+- Section labels use the module index: `[00]` for the hero, `[01]` work, `[02]` about, `[03]`
+  experience, `[04]` contact. The bracket is decorative; the label text stays readable.
+- The home work grid is two equal columns above 768px. The projects grid is one column below
+  1024px, then a 7/5 asymmetric grid with a stacked pair on the right. The featured card spans both
+  stack rows and gives its extra height to the problem/built/outcome/role table, so the rows read as
+  a spaced datasheet rather than leaving a dead field under the summary.
+- The experience record becomes a three-column table above 768px: year, record, link at the far
+  edge. No row is a card.
+- The footer closes with the name at full width. The period is a solid square.
+
+## Components
+
+- Buttons: 48px minimum height, square, monospace uppercase. The primary button is white on black
+  and inverts on hover. The ghost button is a 1px outline.
+- Project cards: 1px rule, raised ground, monochrome screenshot, a metadata bar, a one-line claim,
+  a short summary, slash-separated stack and a link row pushed to the bottom. Hover lifts the border
+  to white and brightens the screenshot slightly. No movement, no zoom.
+- Tech stacks are monospace text separated by slashes, not pills.
+- The digital business card is a floating dialog: 1px border, a 3px white top edge, square corners,
+  and a soft 180ms fade plus 8px rise. It is the only surface allowed a shadow.
+- Status indicators are 7px white squares with a two-step grey ring. They never pulse.
+
+## Texture
+
+- `body::before` holds an inline SVG `feTurbulence` grain, fixed, 180px tile, 0.15 opacity, overlay
+  blend. It is pointer-events none and sits at z-index 9999.
+- `body::after` holds a 4px repeating scanline gradient at 0.18 opacity of a 5.5% white line.
+- Both layers are removed under `prefers-contrast: more`. There is no CRT curvature, no glitch and
+  no distortion over text.
 
 ## Motion
 
-- `main.js` adds `.is-in` to `[data-reveal]` elements through IntersectionObserver. Items travel
-  20px and fade in, with a per-item `--d` delay. Items unobserve after they appear.
-- `.js` is set in the document head, so the page is fully readable if JavaScript fails.
-- `prefers-reduced-motion: reduce` removes the travel, the smooth scroll and the status pulse.
-- The status dot pulses on a 2.6s loop. The terminal cursor blinks on a 1s step. Nothing else loops.
+- No scroll reveals. The page is fully readable the moment it is scrolled to, and no content
+  depends on JavaScript.
+- Hover and focus transitions are 170ms on colour, border and icon position.
+- The dialog opens in 180ms. The mobile menu opens in 170ms.
+- `prefers-reduced-motion: reduce` removes smooth scroll and all transition durations. Content stays.
 
 ## Nav and mobile
 
-The nav is fixed, 76px tall, near-black at 70% with a 16px backdrop blur. At 767px the links collapse
-into a hamburger panel with a solid near-black ground, Escape to close, body scroll lock, and a link
-click that closes the panel before navigation.
+The nav is sticky, 64px tall, solid ground and a 1px rule. The wordmark is a button that opens the
+digital business card. Three links sit in bordered cells on desktop. Below 768px the links collapse
+into a full-panel menu with 1px row rules, Escape to close, body scroll lock and a link click that
+closes the panel before navigation.
 
-Clicking "Rohan" opens the profile card under the nav. It closes on an outside click or Escape, and
-the mobile menu closes it too. The card generates a vCard from a plain string and a Blob.
+The "Skip to content" link is the first focusable element. Focus rings are 2px white with a 3px
+offset. The menu and dialog both trap focus and restore it on close.
 
 ## Copy
 
-Punchy, confident builder voice. Short sentences. No filler verbs, no fake metrics, no em dashes. One
-italic word per heading at most. The terminal on `projects.html` ends exactly on
-`> __ still more to go_`.
+Punchy, confident builder voice. Short sentences. No filler verbs, no fake metrics, no em dashes.
+The terminal on `projects.html` ends exactly on `> __ still more to go_` and does not animate.

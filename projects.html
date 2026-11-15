@@ -34,15 +34,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- The reveal styles only apply when JS is on. If main.js fails, content stays visible. -->
-    <script>
-      document.documentElement.classList.add("js");
-    </script>
   </head>
 
   <body>
@@ -94,8 +90,8 @@
         </button>
 
         <nav class="site-nav__menu" id="site-menu" aria-label="Primary">
+          <a class="nav-link" href="projects.html" aria-current="page">Work</a>
           <a class="nav-link" href="index.html#about">About</a>
-          <a class="nav-link" href="projects.html" aria-current="page">Projects</a>
           <a class="nav-link" href="index.html#contact">Contact</a>
 
           <div class="nav__mobile-meta">
@@ -200,14 +196,14 @@
             Back to Home
           </a>
 
-          <p class="label" data-reveal style="--d: 60ms">Selected work / 2024-2026</p>
-          <h1 id="work-title" data-reveal style="--d: 120ms">The Work</h1>
-          <p class="page-hero__lede" data-reveal style="--d: 180ms">
+          <p class="label" data-num="00">Selected work / 2024-2026</p>
+          <h1 id="work-title">The Work</h1>
+          <p class="page-hero__lede">
             Three live products and a few smaller experiments. Built solo, from first sketch to
             deploy.
           </p>
 
-          <div class="page-hero__meta" data-reveal style="--d: 240ms">
+          <div class="page-hero__meta">
             <span class="mono">03 live products</span>
             <span class="mono">06 builds</span>
             <span class="mono">01 developer</span>
@@ -220,7 +216,7 @@
           <h2 class="sr-only" id="grid-title">All projects</h2>
 
           <div class="bento bento--projects">
-            <article class="project-card project-card--wide" data-reveal>
+            <article class="project-card project-card--wide">
               <a
                 class="project-card__media"
                 href="https://inkloom.art"
@@ -300,7 +296,7 @@
             </article>
 
             <div class="bento__stack">
-              <article class="project-card" data-reveal style="--d: 80ms">
+              <article class="project-card">
                 <a
                   class="project-card__media"
                   href="https://repoquestt.vercel.app"
@@ -356,7 +352,7 @@
                 </div>
               </article>
 
-              <article class="project-card" data-reveal style="--d: 140ms">
+              <article class="project-card">
                 <a
                   class="project-card__media"
                   href="https://lurkr-bsr.vercel.app"
@@ -413,7 +409,7 @@
               </article>
             </div>
 
-            <article class="experiments" data-reveal style="--d: 60ms">
+            <article class="experiments">
               <p class="label">Earlier</p>
               <h3>Small experiments</h3>
               <p class="experiments__intro">
@@ -463,7 +459,7 @@
               </a>
             </article>
 
-            <article class="toolkit-card" data-reveal style="--d: 120ms">
+            <article class="toolkit-card">
               <p class="label">Toolkit</p>
               <h3>What I build with.</h3>
 
@@ -487,7 +483,7 @@
               </dl>
             </article>
 
-            <article class="terminal-card" data-reveal>
+            <article class="terminal-card">
               <p class="terminal-card__label mono">Build log / open ended</p>
               <p class="terminal-card__line">
                 <span class="terminal-card__prompt" aria-hidden="true">&gt;</span>
@@ -505,7 +501,7 @@
           <p class="footer__word">Rohan<span>.</span></p>
           <nav class="footer__nav" aria-label="Footer">
             <a href="index.html#about">About</a>
-            <a href="projects.html">Projects</a>
+            <a href="projects.html">Work</a>
             <a href="index.html#experience">Experience</a>
             <a href="index.html#contact">Contact</a>
             <a href="https://github.com/RohanKodesss" target="_blank" rel="noreferrer">GitHub</a>

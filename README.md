@@ -5,13 +5,14 @@ A two-page portfolio for a developer in India who builds AI products and small w
 The site is a black-and-white "Engineering Workstation" composition: near-black ground, white ink,
 three greys, Space Grotesk display type, Inter body text and IBM Plex Mono labels. Sections are
 separated by thin rules, project screenshots are monochrome, and the layout reads like a clean
-control panel rather than a retro costume. A barely visible grain and scanline layer sits above the
-page without blocking clicks.
+control panel rather than a retro costume. A barely visible paper grain sits above the page without
+blocking clicks. Sections keep a generous 72 to 140px rhythm, and the About band runs without a rule
+above it.
 
-The home page carries the positioning, two featured projects, a short bio, a compact timeline and
-contact. The projects page is the full record: three live products, earlier experiments, a toolkit
-panel and a build log. Clicking "Rohan" on either page opens a digital business card with a
-downloadable vCard.
+The home page carries the positioning, a small project index, two featured projects, a short bio, a
+compact timeline and contact. The projects page is the full record: built and in-progress work in
+`#work`, upcoming builds in `#upcoming`, earlier experiments, and a toolkit panel. Clicking "Rohan"
+on either page opens a digital business card with a downloadable vCard.
 
 ## Stack
 
@@ -35,8 +36,8 @@ build command. There is nothing to compile.
 ## Pages
 
 ```
-index.html      Home: hero, selected work, about, experience, contact
-projects.html   Full work: three products, experiments, toolkit, build log
+index.html      Home: hero, project index, selected work, about, experience, contact
+projects.html   Full record: built work, upcoming builds, experiments, toolkit
 styles.css      Tokens, layout, components, responsive rules, accessibility preferences
 main.js         Mobile menu, profile modal, vCard download
 favicon.svg     Dark favicon
@@ -51,15 +52,17 @@ system, grid and motion rules.
 
 - Ground `#0a0a0a`, raised surface `#101010`, inset surface `#141414`.
 - Ink `#f5f5f5`, body `#cfcfcf`, muted `#b0b0b0`, dim `#8a8a8a`.
-- Rules `#2c2c2c`, strong rules `#4a4a4a`.
+- Rules `#1f1f1f`, strong rules `#4a4a4a`.
 - Display: Space Grotesk 700, tight tracking, 0.98 leading.
 - Body: Inter 400, 16px, 1.6 leading.
-- Labels: IBM Plex Mono 400/500, uppercase, 0.06em tracking, 13px.
+- Labels and navigation: IBM Plex Mono 400/500, uppercase, 0.06em tracking, 13px.
+- Buttons and inline text links: Inter 500, sentence case, no tracking.
 - Square corners everywhere. No shadows except the floating business card.
 
-The nav is sticky at 64px. Sections use a fluid 56 to 92px vertical rhythm and sit on full-width
-rules. The container is capped at 1240px with fluid gutters. The work grid is one column below
-1024px and a 7/5 asymmetric grid above it.
+The nav is sticky at 64px. Sections use a fluid 72 to 140px vertical rhythm and sit on full-width
+rules, except About. The container is capped at 1240px with fluid gutters. The work grid is one
+column below 1024px and a 7/5 asymmetric grid above it. The footer name is outlined rather than
+solid: a 1px stroke at `clamp(2.5rem, 6vw, 5rem)` that fills in on hover.
 
 ## Checks
 

@@ -20,7 +20,7 @@
   --fg-body: #cfcfcf;
   --fg-muted: #b0b0b0;
   --fg-dim: #8a8a8a;
-  --rule: #2c2c2c;
+  --rule: #1f1f1f;
   --rule-strong: #4a4a4a;
 
   /* Type. Three families, three jobs. */
@@ -56,7 +56,7 @@
   --container: 1240px;
   --gutter: clamp(20px, 4vw, 48px);
   --nav-height: 64px;
-  --section-pad: clamp(56px, 6.5vw, 92px);
+  --section-pad: clamp(72px, 9vw, 140px);
 
   /* Motion. Short, quiet, purposeful. */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -99,34 +99,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* The only two global textures. They sit above everything but never catch a
-   click or a tap. Barely visible on purpose: this is paper grain, not noise. */
-body::before,
-body::after {
+/* The global paper grain. It sits above everything but never catches a click
+   or a tap. Barely visible on purpose: this is texture, not noise. */
+body::before {
   content: "";
   position: fixed;
   inset: 0;
-  pointer-events: none;
-}
-
-body::before {
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.62'/%3E%3C/svg%3E");
   background-size: 180px 180px;
-  opacity: 0.15;
+  opacity: 0.09;
   mix-blend-mode: overlay;
-}
-
-body::after {
-  z-index: 9998;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.055) 0,
-    rgba(255, 255, 255, 0.055) 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  opacity: 0.18;
+  pointer-events: none;
 }
 
 body.menu-open,
@@ -288,6 +272,11 @@ p {
   scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
+/* One open band: About runs without a rule above it. */
+#about {
+  border-top: 0;
+}
+
 .section:first-of-type {
   border-top: 0;
 }
@@ -390,12 +379,11 @@ p {
   border: 1px solid var(--fg);
   background: var(--fg);
   color: var(--bg);
-  font-family: var(--font-mono);
-  font-size: var(--fs-200);
+  font-family: var(--font-body);
+  font-size: var(--fs-300);
   font-weight: 500;
-  letter-spacing: 0.07em;
+  letter-spacing: 0;
   line-height: 1;
-  text-transform: uppercase;
   transition:
     background var(--dur) var(--ease),
     color var(--dur) var(--ease),
@@ -438,12 +426,11 @@ p {
   padding-bottom: 4px;
   border-bottom: 1px solid var(--rule-strong);
   color: var(--fg);
-  font-family: var(--font-mono);
-  font-size: var(--fs-200);
+  font-family: var(--font-body);
+  font-size: var(--fs-300);
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   line-height: 1.4;
-  text-transform: uppercase;
   transition:
     color var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
@@ -906,62 +893,56 @@ p {
   font-size: var(--fs-200);
 }
 
-.hero__panel-live {
-  display: inline-flex;
+/* The hero index: two doors out, not a project readout. */
+.index-row {
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--fg);
-  font-size: var(--fs-200);
-}
-
-.hero__panel-body {
+  gap: var(--space-4);
   padding: var(--space-5);
-}
-
-.hero__panel-kicker {
-  color: var(--fg-muted);
-  font-size: var(--fs-100);
-}
-
-.hero__panel-title {
-  margin-top: var(--space-3);
   color: var(--fg);
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.22;
+  transition: background var(--dur) var(--ease);
 }
 
-.hero__panel-facts {
-  display: grid;
-  gap: 0;
-  margin-top: var(--space-5);
+.index-row + .index-row {
   border-top: 1px solid var(--rule);
 }
 
-.hero__panel-facts > div {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-4);
-  padding: 10px 0;
-  border-bottom: 1px solid var(--rule);
+.index-row:hover {
+  background: var(--bg-inset);
 }
 
-.hero__panel-facts dt {
+.index-row__num {
   color: var(--fg-dim);
   font-size: var(--fs-100);
 }
 
-.hero__panel-facts dd {
-  color: var(--fg);
-  font-size: var(--fs-300);
-  text-align: right;
+.index-row__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.hero__panel-body .text-link {
-  margin-top: var(--space-5);
+.index-row__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-600);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.index-row__meta {
+  color: var(--fg-dim);
+  font-size: var(--fs-100);
+}
+
+.index-row .icon {
+  color: var(--fg-muted);
+  transition: transform var(--dur) var(--ease);
+}
+
+.index-row:hover .icon {
+  transform: translate(2px, -2px);
 }
 
 .hero__panel-foot {
@@ -1423,7 +1404,7 @@ p {
   font-size: var(--fs-300);
 }
 
-/* The build log is the closing line of the grid. It stays still. */
+/* The build log closes the upcoming section. It stays still. */
 .terminal-card {
   padding: var(--space-6);
   border: 1px solid var(--rule);
@@ -1522,10 +1503,10 @@ p {
   padding-bottom: 6px;
   border-bottom: 1px solid var(--rule-strong);
   color: var(--fg);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: clamp(0.95rem, 2.8vw, 1.3rem);
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   transition:
     color var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
@@ -1577,10 +1558,25 @@ p {
 .footer__word {
   color: var(--fg);
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 17vw, 12rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 700;
-  letter-spacing: -0.065em;
-  line-height: 0.76;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  transition:
+    color 150ms ease,
+    -webkit-text-stroke-color 150ms ease;
+}
+
+@supports (-webkit-text-stroke: 1px #fff) {
+  .footer__word {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--fg);
+  }
+
+  .footer__word:hover {
+    color: var(--fg);
+    -webkit-text-stroke: 1px transparent;
+  }
 }
 
 .footer__word span {
@@ -1589,7 +1585,9 @@ p {
   height: 0.13em;
   margin-left: 0.03em;
   background: var(--fg);
-  font-size: 0;
+  color: transparent;
+  font-size: inherit;
+  overflow: hidden;
 }
 
 .footer__nav {
@@ -1812,20 +1810,12 @@ p {
   .bento--projects .toolkit-card {
     grid-column: span 5;
   }
-
-  .bento--projects .terminal-card {
-    grid-column: 1 / -1;
-  }
 }
 
 /* On a phone the grain turns into visible noise. Dial it down. */
 @media (max-width: 640px) {
   body::before {
-    opacity: 0.08;
-  }
-
-  body::after {
-    opacity: 0.1;
+    opacity: 0.07;
   }
 
   .hero {
@@ -1865,8 +1855,7 @@ p {
    -------------------------------------------------------------------------- */
 
 @media (prefers-contrast: more) {
-  body::before,
-  body::after {
+  body::before {
     display: none;
   }
 

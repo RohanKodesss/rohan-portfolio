@@ -942,7 +942,8 @@ const CONFIG = {
       blurb: 'A security scanner that answers four checks in one scan. Results come from an in-memory cache, so the target’s data never gets written to disk.',
       tags: ['Python', 'Flask', 'JavaScript', 'In-memory cache'],
       note: 'The result screen tells you what it found better than why it matters. Next pass: put the evidence next to each check instead of one summary line.',
-      url: 'https://lurkr-bsr.vercel.app'
+      url: 'https://lurkr-bsr.vercel.app',
+      repo: 'https://github.com/RohanKodesss/Lurkr'
     },
     {
       title: 'RepoQuest',
@@ -950,7 +951,8 @@ const CONFIG = {
       blurb: 'Paste a public GitHub repository and walk through it as a dungeon. The parser reads the real files; the model only narrates what is already there.',
       tags: ['Python', 'Flask', 'Gemini', 'JavaScript'],
       note: 'The dungeon is more fun to build than to finish. If I started again I’d keep the map smaller and make the first room load instantly.',
-      url: 'https://repoquestt.vercel.app'
+      url: 'https://repoquestt.vercel.app',
+      repo: 'https://github.com/RohanKodesss/Repoquest'
     },
     {
       title: 'BillNest',
@@ -958,7 +960,8 @@ const CONFIG = {
       blurb: 'A small bill management system in Python. Log what is due, see what is left, and stop keeping the same three numbers in four different places.',
       tags: ['Python', 'Data'],
       note: 'Everything lives in a local file. Fine for one person, useless for a household. The next version gets a real database.',
-      url: 'https://github.com/RohanKodesss/BillNest-'
+      url: '',
+      repo: 'https://github.com/RohanKodesss/BillNest-'
     },
     {
       title: 'Smart Pill',
@@ -966,7 +969,8 @@ const CONFIG = {
       blurb: 'A health management system I joined as a contributor. I worked on the interface with the rest of the team, and the build is public.',
       tags: ['Contributor', 'JavaScript'],
       note: 'Reading someone else’s codebase first was the whole lesson. My first pull request changed things that were already handled somewhere else.',
-      url: 'https://smartpill-three.vercel.app'
+      url: 'https://smartpill-three.vercel.app',
+      repo: 'https://github.com/RohanKodesss/smartpill'
     }
   ];
 
@@ -975,11 +979,20 @@ const CONFIG = {
 
   var grid = document.getElementById('grid');
 
+  function projectLink(kind, label, href) {
+    if (!href) return '';
+
+    var dead = href === '#';
+
+    return '<a class="btn ' + kind + '" href="' + href + '" target="_blank" rel="noopener noreferrer"' +
+      (dead ? ' aria-disabled="true" tabindex="-1"' : '') + '>' +
+      label + ' <svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg></a>';
+  }
+
   grid.innerHTML = PROJECTS.map(function (p, i) {
     var num = String(i + 1).padStart(2, '0');
     var slug = p.title.toLowerCase().replace(/ /g, '-');
     var noteId = 'note-' + num;
-    var off = p.url === '#';
 
     return '<article class="win card">' +
       '<div class="tt"><i aria-hidden="true"></i><span>' + num + '_' + slug + '.app</span></div>' +
@@ -992,7 +1005,8 @@ const CONFIG = {
         }).join('') + '</div>' +
         '<div class="row">' +
           '<button class="btn redo" type="button" aria-expanded="false" aria-controls="' + noteId + '">What I’d redo <svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg></button>' +
-          '<a class="btn visit" href="' + p.url + '" target="_blank" rel="noopener noreferrer"' + (off ? ' aria-disabled="true" tabindex="-1"' : '') + '>Visit <svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg></a>' +
+          projectLink('visit', 'Visit', p.url) +
+          projectLink('repo', 'Code', p.repo) +
         '</div>' +
         '<div class="note" id="' + noteId + '">' + p.note + '</div>' +
       '</div>' +

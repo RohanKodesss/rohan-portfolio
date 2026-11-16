@@ -28,9 +28,9 @@ Everything user-facing is in one of two places inside `index.html`:
 1. `CONFIG` at the top of the second `<script>` block — `name`, `email`, `github`, `linkedin`,
    `instagram`, `resume`. `name` drives the titles and copyright, `email` drives the mail link and
    the copy button.
-2. `PROJECTS` just below it — four objects of `title`, `year`, `blurb`, `tags[]`, `note`, `url`.
-   A `url` of `"#"` renders the Visit button dimmed and unclickable; any real URL makes it a live
-   link that opens in a new tab.
+2. `PROJECTS` just below it — four objects of `title`, `year`, `blurb`, `tags[]`, `note`, `url`, `repo`.
+   `url` is the live build and `repo` the source; either one left empty simply drops that button.
+   A `url` of `"#"` renders the Visit button dimmed and unclickable instead.
 
 Three things sit outside both and are edited in the markup: the hero greeting (`// hi, i’m Rohan.`),
 the `<title>` / `og:title` / `meta description` in `<head>`, and the address inside the

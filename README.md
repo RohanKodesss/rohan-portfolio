@@ -28,13 +28,20 @@ Everything user-facing is in one of two places inside `index.html`:
 1. `CONFIG` at the top of the second `<script>` block — `name`, `email`, `github`, `linkedin`,
    `instagram`, `resume`. `name` drives the titles and copyright, `email` drives the mail link and
    the copy button.
-2. `PROJECTS` just below it — five objects of `title`, `year`, `blurb`, `tags[]`, `note`, `url`.
+2. `PROJECTS` just below it — four objects of `title`, `year`, `blurb`, `tags[]`, `note`, `url`.
    A `url` of `"#"` renders the Visit button dimmed and unclickable; any real URL makes it a live
    link that opens in a new tab.
 
-Three things sit outside both and are edited in the markup: the hero greeting (`// hi, i’m Sam.`),
+Three things sit outside both and are edited in the markup: the hero greeting (`// hi, i’m Rohan.`),
 the `<title>` / `og:title` / `meta description` in `<head>`, and the address inside the
 `<noscript>` sentence.
+
+## The résumé — `resume.html`
+
+A one-page CV in the same visual language, linked from the Resume button. Screen and print share
+one stylesheet, so "Print / save as PDF" in the browser produces a single A4 page with the window
+chrome and buttons stripped out. It lists the same four projects as the portfolio, so keep the two
+in sync when a project changes.
 
 ### Checks
 

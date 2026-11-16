@@ -31,6 +31,9 @@ Everything user-facing is in one of two places inside `index.html`:
 2. `PROJECTS` just below it — four objects of `title`, `year`, `blurb`, `tags[]`, `note`, `url`, `repo`.
    `url` is the live build and `repo` the source; either one left empty simply drops that button.
    A `url` of `"#"` renders the Visit button dimmed and unclickable instead.
+3. `UPCOMING` right after — the queue shown in the dashed "Still to go" card. Each entry is
+   `{ name: 'Working title', status: 'sketching' }`, and the status chip is optional. Leave the
+   array empty and the card falls back to "Queue’s clear right now."
 
 Three things sit outside both and are edited in the markup: the hero greeting (`// hi, i’m Rohan.`),
 the `<title>` / `og:title` / `meta description` in `<head>`, and the address inside the

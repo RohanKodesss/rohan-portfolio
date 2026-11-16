@@ -553,6 +553,44 @@ html.is-paused .sticker {
   transform: rotate(90deg);
 }
 
+/* The queue card: not a build, so it reads as a note */
+.card.upcoming {
+  border-style: dashed;
+}
+
+.card.upcoming .bd {
+  display: flex;
+  flex-direction: column;
+}
+
+.queue {
+  margin-top: 12px;
+}
+
+.queue li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.queue-status {
+  display: inline-block;
+  border: 2px solid var(--ink);
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.queue-empty {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px dashed var(--ink);
+  font-size: 13px;
+  opacity: 0.75;
+}
+
 .back {
   margin-top: 44px;
 }
@@ -977,6 +1015,11 @@ const CONFIG = {
   document.getElementById('count').textContent =
     '// folder: projects/ (' + PROJECTS.length + ' items)';
 
+  /* The queue for what comes next. Add one line per idea:
+     { name: 'Working title', status: 'sketching' }
+     Leave the array empty and the card explains itself. */
+  var UPCOMING = [];
+
   var grid = document.getElementById('grid');
 
   function projectLink(kind, label, href) {
@@ -1011,7 +1054,23 @@ const CONFIG = {
         '<div class="note" id="' + noteId + '">' + p.note + '</div>' +
       '</div>' +
     '</article>';
-  }).join('');
+  }).join('') +
+  '<article class="win card upcoming">' +
+    '<div class="tt"><i aria-hidden="true"></i><span>' +
+      String(PROJECTS.length + 1).padStart(2, '0') + '_still-to-go.txt' +
+    '</span></div>' +
+    '<div class="bd">' +
+      '<p class="year">ongoing</p>' +
+      '<h3>Still to go</h3>' +
+      '<p>The queue for what I build next. Nothing moves up here until it works.</p>' +
+      (UPCOMING.length
+        ? '<ul class="queue">' + UPCOMING.map(function (u) {
+            return '<li data-m="→">' + u.name +
+              (u.status ? ' <span class="queue-status">' + u.status + '</span>' : '') + '</li>';
+          }).join('') + '</ul>'
+        : '<p class="queue-empty">Queue’s clear right now. When something is next, it lands here.</p>') +
+    '</div>' +
+  '</article>';
 
   grid.addEventListener('click', function (e) {
     var btn = e.target.closest('.redo');
